@@ -1,6 +1,13 @@
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Account Management
 //-------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Adds the specified generic service identifier to the player's PlayFab account. This is designed to allow for a PlayFab ID lookup of any arbitrary service identifier a title wants to add. This identifier should never be used as authentication credentials, as the intent is that it is easily accessible by other players.
+ * @param {GenericServiceId} genericId
+ * *REQUIRED* Generic service identifier to add to the player account.
+ * @param {string} playFabId
+ * *REQUIRED* PlayFabId of the user to link.
+ */
 function AddGenericID(genericId, playFabId)
 {
     var AddGenericID = server.AddGenericID(
@@ -9,7 +16,12 @@ function AddGenericID(genericId, playFabId)
         PlayFabId: playFabId
     });
     return(AddGenericID);
-}//genericId, playFabId
+}
+/**
+ * Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
+ * @param {BanRequest[]} bans
+ * *REQUIRED* List of ban requests to be applied. Maximum 100.
+ */
 function BanUsers(bans)
 {
     var BanUsers = server.BanUsers(
@@ -17,7 +29,12 @@ function BanUsers(bans)
         Bans: bans
     });
     return(BanUsers);
-}//bans
+}
+/**
+ * Removes a user's player account from a title and deletes all associated data
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function DeletePlayer(playFabId)
 {
     var DeletePlayer = server.DeletePlayer(
@@ -25,7 +42,12 @@ function DeletePlayer(playFabId)
         PlayFabId: playFabId
     });
     return(DeletePlayer);
-}//playFabId
+}
+/**
+ * Deletes push notification template for title
+ * @param {string} pushNotificationTemplateId
+ * *REQUIRED* Id of the push notification template to be deleted.
+ */
 function DeletePushNotificationTemplate(pushNotificationTemplateId)
 {
     var DeletePushNotificationTemplate = server.DeletePushNotificationTemplate(
@@ -33,7 +55,12 @@ function DeletePushNotificationTemplate(pushNotificationTemplateId)
         PushNotificationTemplateId: pushNotificationTemplateId
     });
     return(DeletePushNotificationTemplate);
-}//pushNotificationTemplateId
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of Facebook identifiers.
+ * @param {string[]} facebookIDs
+ * *REQUIRED* Array of unique Facebook identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000 in length.
+ */
 function GetPlayFabIDsFromFacebookIDs(facebookIDs)
 {
     var GetPlayFabIDsFromFacebookIDs = server.GetPlayFabIDsFromFacebookIDs(
@@ -41,7 +68,12 @@ function GetPlayFabIDsFromFacebookIDs(facebookIDs)
         FacebookIDs: facebookIDs
     });
     return(GetPlayFabIDsFromFacebookIDs);
-}//facebookIDs
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of Facebook Instant Games identifiers.
+ * @param {string[]} facebookInstantGamesIds
+ * *REQUIRED* Array of unique Facebook Instant Games identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 25 in length.
+ */
 function GetPlayFabIDsFromFacebookInstantGamesIds(facebookInstantGamesIds)
 {
     var GetPlayFabIDsFromFacebookInstantGamesIds = server.GetPlayFabIDsFromFacebookInstantGamesIds(
@@ -49,7 +81,12 @@ function GetPlayFabIDsFromFacebookInstantGamesIds(facebookInstantGamesIds)
         FacebookInstantGamesIds: facebookInstantGamesIds
     });
     return(GetPlayFabIDsFromFacebookInstantGamesIds);
-}//facebookInstantGamesIds
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of generic service identifiers. A generic identifier is the service name plus the service-specific ID for the player, as specified by the title when the generic identifier was added to the player account.
+ * @param {GenericServiceId[]} genericIDs
+ * *REQUIRED* Array of unique generic service identifiers for which the title needs to get PlayFab identifiers. Currently limited to a maximum of 10 in a single request. https://learn.microsoft.com/en-us/rest/api/playfab/server/account-management/get-playfab-ids-from-generic-ids?view=playfab-rest#genericserviceid
+ */
 function GetPlayFabIDsFromGenericIDs(genericIDs)
 {
     var GetPlayFabIDsFromGenericIDs = server.GetPlayFabIDsFromGenericIDs(
@@ -57,7 +94,12 @@ function GetPlayFabIDsFromGenericIDs(genericIDs)
         GenericIDs: genericIDs
     });
     return(GetPlayFabIDsFromGenericIDs);
-}//genericIDs
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of Nintendo Service Account identifiers.
+ * @param {string[]} nintendoAccountIds
+ * *REQUIRED* Array of unique Nintendo Switch Account identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000 in length.
+ */
 function GetPlayFabIDsFromNintendoServiceAccountIds(nintendoAccountIds)
 {
     var GetPlayFabIDsFromNintendoServiceAccountIds = server.GetPlayFabIDsFromNintendoServiceAccountIds(
@@ -65,7 +107,12 @@ function GetPlayFabIDsFromNintendoServiceAccountIds(nintendoAccountIds)
         NintendoAccountIds: nintendoAccountIds
     });
     return(GetPlayFabIDsFromNintendoServiceAccountIds);
-}//nintendoAccountIds
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch Device identifiers.
+ * @param {string[]} nintendoSwitchDeviceIds
+ * *REQUIRED* Array of unique Nintendo Switch Device identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000 in length.
+ */
 function GetPlayFabIDsFromNintendoSwitchDeviceIds(nintendoSwitchDeviceIds)
 {
     var GetPlayFabIDsFromNintendoSwitchDeviceIds = server.GetPlayFabIDsFromNintendoSwitchDeviceIds(
@@ -73,15 +120,14 @@ function GetPlayFabIDsFromNintendoSwitchDeviceIds(nintendoSwitchDeviceIds)
         NintendoSwitchDeviceIds: nintendoSwitchDeviceIds
     });
     return(GetPlayFabIDsFromNintendoSwitchDeviceIds);
-}//nintendoSwitchDeviceIds
-function GetPlayFabIDsFromPSNAccountIDs(psnAccountIDs)
-{
-    var GetPlayFabIDsFromPSNAccountIDs = server.GetPlayFabIDsFromPSNAccountIDs(
-    {
-        PSNAccountIDs: psnAccountIDs
-    });
-    return(GetPlayFabIDsFromPSNAccountIDs);
-}//psnAccountIDs
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of PlayStation ™️ Network identifiers.
+ * @param {string[]} psnAccountIDs
+ * *REQUIRED* Array of unique PlayStation ™️ Network identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000 in length.
+ * @param {number} issuerId
+ * Id of the PlayStation ™️ Network issuer environment. If null, defaults to production environment.
+ */
 function GetPlayFabIDsFromPSNAccountIDs(psnAccountIDs, issuerId)
 {
     var GetPlayFabIDsFromPSNAccountIDs = server.GetPlayFabIDsFromPSNAccountIDs(
@@ -90,7 +136,12 @@ function GetPlayFabIDsFromPSNAccountIDs(psnAccountIDs, issuerId)
         IssuerId: issuerId
     });
     return(GetPlayFabIDsFromPSNAccountIDs);
-}//psnAccountIDs, issuerId
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile IDs for the user accounts, available as SteamId in the Steamworks Community API calls.
+ * @param {string[]} steamStringIDs
+ * *REQUIRED* Array of unique Steam identifiers (Steam profile IDs) for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000 in length.
+ */
 function GetPlayFabIDsFromSteamIDs(steamStringIDs)
 {
     var GetPlayFabIDsFromSteamIDs = server.GetPlayFabIDsFromSteamIDs(
@@ -98,7 +149,12 @@ function GetPlayFabIDsFromSteamIDs(steamStringIDs)
         SteamStringIDs: steamStringIDs
     });
     return(GetPlayFabIDsFromSteamIDs);
-}//steamStringIDs
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of Twitch identifiers. The Twitch identifiers are the IDs for the user accounts, available as "_id" from the Twitch API methods (ex: https://github.com/justintv/Twitch-API/blob/master/v3_resources/users.md#get-usersuser).
+ * @param {string[]} twitchIds
+ * *REQUIRED* Array of unique Twitch identifiers (Twitch's _id) for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000 in length.
+ */
 function GetPlayFabIDsFromTwitchIDs(twitchIds)
 {
     var GetPlayFabIDsFromTwitchIDs = server.GetPlayFabIDsFromTwitchIDs(
@@ -106,15 +162,14 @@ function GetPlayFabIDsFromTwitchIDs(twitchIds)
         TwitchIds: twitchIds
     });
     return(GetPlayFabIDsFromTwitchIDs);
-}//twitchIds
-function GetPlayFabIDsFromXboxLiveIDs(xboxLiveAccountIDs)
-{
-    var GetPlayFabIDsFromXboxLiveIDs = server.GetPlayFabIDsFromXboxLiveIDs(
-    {
-        XboxLiveAccountIDs: xboxLiveAccountIDs
-    });
-    return(GetPlayFabIDsFromXboxLiveIDs);
-}//xboxLiveAccountIDs
+}
+/**
+ * Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
+ * @param {string[]} xboxLiveAccountIDs
+ * *REQUIRED* Array of unique Xbox Live account identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000 in length.
+ * @param {string} sandbox
+ * The ID of Xbox Live sandbox.
+ */
 function GetPlayFabIDsFromXboxLiveIDs(xboxLiveAccountIDs, sandbox)
 {
     var GetPlayFabIDsFromXboxLiveIDs = server.GetPlayFabIDsFromXboxLiveIDs(
@@ -123,15 +178,14 @@ function GetPlayFabIDsFromXboxLiveIDs(xboxLiveAccountIDs, sandbox)
         Sandbox: sandbox
     });
     return(GetPlayFabIDsFromXboxLiveIDs);
-}//xboxLiveAccountIDs, sandbox
-function GetPlayerProfile(playFabId)
-{
-    var GetPlayerProfile = server.GetPlayerProfile(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetPlayerProfile);
-}//playFabId
+}
+/**
+ * Retrieves the player's profile
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {PlayerProfileViewConstraints} profileConstraints
+ * If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section. https://learn.microsoft.com/en-us/rest/api/playfab/server/account-management/get-player-profile?view=playfab-rest#playerprofileviewconstraints
+ */
 function GetPlayerProfile(playFabId, profileConstraints)
 {
     var GetPlayerProfile = server.GetPlayerProfile(
@@ -140,7 +194,12 @@ function GetPlayerProfile(playFabId, profileConstraints)
         ProfileConstraints: profileConstraints
     });
     return(GetPlayerProfile);
-}//playFabId, profileConstraints
+}
+/**
+ * Retrieves the associated PlayFab account identifiers for the given set of server custom identifiers.
+ * @param {string[]} playFabIDs
+ * *REQUIRED* Array of unique PlayFab player identifiers for which the title needs to get server custom identifiers. Cannot contain more than 25 identifiers.
+ */
 function GetServerCustomIDsFromPlayFabIDs(playFabIDs)
 {
     var GetServerCustomIDsFromPlayFabIDs = server.GetServerCustomIDsFromPlayFabIDs(
@@ -148,7 +207,12 @@ function GetServerCustomIDsFromPlayFabIDs(playFabIDs)
         PlayFabIDs: playFabIDs
     });
     return(GetServerCustomIDsFromPlayFabIDs);
-}//playFabIDs
+}
+/**
+ * Retrieves the relevant details for a specified user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function GetUserAccountInfo(playFabId)
 {
     var GetUserAccountInfo = server.GetUserAccountInfo(
@@ -156,7 +220,12 @@ function GetUserAccountInfo(playFabId)
         PlayFabId: playFabId
     });
     return(GetUserAccountInfo);
-}//playFabId
+}
+/**
+ * Gets all bans for a user.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function GetUserBans(playFabId)
 {
     var GetUserBans = server.GetUserBans(
@@ -164,16 +233,16 @@ function GetUserBans(playFabId)
         PlayFabId: playFabId
     });
     return(GetUserBans);
-}//playFabId
-function LinkNintendoServiceAccount(identityToken, playFabId)
-{
-    var LinkNintendoServiceAccount = server.LinkNintendoServiceAccount(
-    {
-        IdentityToken: identityToken,
-        PlayFabId: playFabId
-    });
-    return(LinkNintendoServiceAccount);
-}//identityToken, playFabId
+}
+/**
+ * Links the Nintendo account associated with the token to the user's PlayFab account
+ * @param {string} identityToken
+ * *REQUIRED* The JSON Web token (JWT) returned by Nintendo after login. Used to validate the request and find the user ID (Nintendo Switch subject) to link with.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {boolean} forceLink
+ * If another user is already linked to a specific Nintendo Switch account, unlink the other user and re-link.
+ */
 function LinkNintendoServiceAccount(identityToken, playFabId, forceLink)
 {
     var LinkNintendoServiceAccount = server.LinkNintendoServiceAccount(
@@ -183,16 +252,16 @@ function LinkNintendoServiceAccount(identityToken, playFabId, forceLink)
         ForceLink: forceLink
     });
     return(LinkNintendoServiceAccount);
-}//identityToken, playFabId, forceLink
-function LinkNintendoSwitchDeviceId(nintendoSwitchDeviceId, playFabId)
-{
-    var LinkNintendoSwitchDeviceId = server.LinkNintendoSwitchDeviceId(
-    {
-        NintendoSwitchDeviceId: nintendoSwitchDeviceId,
-        PlayFabId: playFabId
-    });
-    return(LinkNintendoSwitchDeviceId);
-}//nintendoSwitchDeviceId, playFabId
+}
+/**
+ * Links the NintendoSwitchDeviceId to the user's PlayFab account
+ * @param {string} nintendoSwitchDeviceId
+ * *REQUIRED* Nintendo Switch unique identifier for the user's device.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {boolean} forceLink
+ * If another user is already linked to the Nintendo Switch Device ID, unlink the other user and re-link.
+ */
 function LinkNintendoSwitchDeviceId(nintendoSwitchDeviceId, playFabId, forceLink)
 {
     var LinkNintendoSwitchDeviceId = server.LinkNintendoSwitchDeviceId(
@@ -202,28 +271,20 @@ function LinkNintendoSwitchDeviceId(nintendoSwitchDeviceId, playFabId, forceLink
         ForceLink: forceLink
     });
     return(LinkNintendoSwitchDeviceId);
-}//nintendoSwitchDeviceId, playFabId, forceLink
-function LinkPSNAccount(authCode, playFabId, redirectUri)
-{
-    var LinkPSNAccount = server.LinkPSNAccount(
-    {
-        AuthCode: authCode,
-        PlayFabId: playFabId,
-        RedirectUri: redirectUri
-    });
-    return(LinkPSNAccount);
-}//authCode, playFabId, redirectUri
-function LinkPSNAccount(authCode, playFabId, redirectUri, forceLink)
-{
-    var LinkPSNAccount = server.LinkPSNAccount(
-    {
-        AuthCode: authCode,
-        PlayFabId: playFabId,
-        RedirectUri: redirectUri,
-        ForceLink: forceLink
-    });
-    return(LinkPSNAccount);
-}//authCode, playFabId, redirectUri, forceLink
+}
+/**
+ * Links the PlayStation ™️ Network account associated with the provided access code to the user's PlayFab account
+ * @param {string} authCode
+ * *REQUIRED* Authentication code provided by the PlayStation ™️ Network.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} redirectUri
+ * *REQUIRED* Redirect URI supplied to PlayStation ™️ Network when requesting an auth code
+ * @param {boolean} forceLink
+ * If another user is already linked to the account, unlink the other user and re-link.
+ * @param {number} issuerId
+ * Id of the PlayStation ™️ Network issuer environment. If null, defaults to production environment.
+ */
 function LinkPSNAccount(authCode, playFabId, redirectUri, forceLink, issuerId)
 {
     var LinkPSNAccount = server.LinkPSNAccount(
@@ -235,16 +296,16 @@ function LinkPSNAccount(authCode, playFabId, redirectUri, forceLink, issuerId)
         IssuerId: issuerId
     });
     return(LinkPSNAccount);
-}//authCode, playFabId, redirectUri, forceLink, issuerId
-function LinkServerCustomId(playFabId, serverCustomId)
-{
-    var LinkServerCustomId = server.LinkServerCustomId(
-    {
-        PlayFabId: playFabId,
-        ServerCustomId: serverCustomId
-    });
-    return(LinkServerCustomId);
-}//playFabId, serverCustomId
+}
+/**
+ * Links the custom server identifier, generated by the title, to the user's PlayFab account.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab identifier.
+ * @param {string} serverCustomId
+ * *REQUIRED* Unique server custom identifier for this player.
+ * @param {boolean} forceLink
+ * If another user is already linked to the custom ID, unlink the other user and re-link.
+ */
 function LinkServerCustomId(playFabId, serverCustomId, forceLink)
 {
     var LinkServerCustomId = server.LinkServerCustomId(
@@ -254,16 +315,16 @@ function LinkServerCustomId(playFabId, serverCustomId, forceLink)
         ForceLink: forceLink
     });
     return(LinkServerCustomId);
-}//playFabId, serverCustomId, forceLink
-function LinkXboxAccount(playFabId, xboxToken)
-{
-    var LinkXboxAccount = server.LinkXboxAccount(
-    {
-        PlayFabId: playFabId,
-        XboxToken: xboxToken
-    });
-    return(LinkXboxAccount);
-}//playFabId, xboxToken
+}
+/**
+ * Links the Xbox Live account associated with the provided access code to the user's PlayFab account
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
+ * @param {string} xboxToken
+ * *REQUIRED* Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", "").
+ * @param {boolean} forceLink
+ * If another user is already linked to the account, unlink the other user and re-link.
+ */
 function LinkXboxAccount(playFabId, xboxToken, forceLink)
 {
     var LinkXboxAccount = server.LinkXboxAccount(
@@ -273,7 +334,14 @@ function LinkXboxAccount(playFabId, xboxToken, forceLink)
         ForceLink: forceLink
     });
     return(LinkXboxAccount);
-}//playFabId, xboxToken, forceLink
+}
+/**
+ * Removes the specified generic service identifier from the player's PlayFab account.
+ * @param {GenericServiceId} genericId
+ * *REQUIRED* Generic service identifier to be removed from the player.
+ * @param {string} playFabId
+ * *REQUIRED* PlayFabId of the user to remove.
+ */
 function RemoveGenericID(genericId, playFabId)
 {
     var RemoveGenericID = server.RemoveGenericID(
@@ -282,7 +350,12 @@ function RemoveGenericID(genericId, playFabId)
         GenericId: genericId
     });
     return(RemoveGenericID);
-}//genericId, playFabId
+}
+/**
+ * Revoke all active bans for a user.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function RevokeAllBansForUser(playFabId)
 {
     var RevokeAllBansForUser = server.RevokeAllBansForUser(
@@ -290,7 +363,12 @@ function RevokeAllBansForUser(playFabId)
         PlayFabId: playFabId
     });
     return(RevokeAllBansForUser);
-}//playFabId
+}
+/**
+ * Revoke all active bans specified with BanId.
+ * @param {string[]} banIds
+ * *REQUIRED* Ids of the bans to be revoked. Maximum 100.
+ */
 function RevokeBans(banIds)
 {
     var RevokeBans = server.RevokeBans(
@@ -298,45 +376,20 @@ function RevokeBans(banIds)
         BanIds: banIds
     });
     return(RevokeBans);
-}//banIds
-function SavePushNotificationTemplate(name)
-{
-    var SavePushNotificationTemplate = server.SavePushNotificationTemplate(
-    {
-        Name: name
-    });
-    return(SavePushNotificationTemplate);
-}//name
-function SavePushNotificationTemplate(name, androidPayload)
-{
-    var SavePushNotificationTemplate = server.SavePushNotificationTemplate(
-    {
-        Name: name,
-        AndroidPayload: androidPayload
-    });
-    return(SavePushNotificationTemplate);
-}//name, androidPayload
-function SavePushNotificationTemplate(name, androidPayload, iosPayload)
-{
-    var SavePushNotificationTemplate = server.SavePushNotificationTemplate(
-    {
-        Name: name,
-        AndroidPayload: androidPayload,
-        IOSPayload: iosPayload
-    });
-    return(SavePushNotificationTemplate);
-}//name, androidPayload, iosPayload
-function SavePushNotificationTemplate(name, androidPayload, iosPayload, id)
-{
-    var SavePushNotificationTemplate = server.SavePushNotificationTemplate(
-    {
-        Name: name,
-        AndroidPayload: androidPayload,
-        IOSPayload: iosPayload,
-        Id: id
-    });
-    return(SavePushNotificationTemplate);
-}//name, androidPayload, iosPayload, id
+}
+/**
+ * Saves push notification template for title
+ * @param {string} name
+ * *REQUIRED* Name of the push notification template.
+ * @param {string} androidPayload
+ * Android JSON for the notification template.
+ * @param {string} iosPayload
+ * IOS JSON for the notification template.
+ * @param {string} id
+ * Id of the push notification template.
+ * @param {LocalizedPushNotificationProperties} localizedPushNotificationTemplates
+ * Dictionary of localized push notification templates with the language as the key.
+ */
 function SavePushNotificationTemplate(name, androidPayload, iosPayload, id, localizedPushNotificationTemplates)
 {
     var SavePushNotificationTemplate = server.SavePushNotificationTemplate(
@@ -348,24 +401,16 @@ function SavePushNotificationTemplate(name, androidPayload, iosPayload, id, loca
         LocalizedPushNotificationTemplates: localizedPushNotificationTemplates
     });
     return(SavePushNotificationTemplate);
-}//name, androidPayload, iosPayload, id, localizedPushNotificationTemplates
-function SendCustomAccountRecoveryEmail(emailTemplateId)
-{
-    var SendCustomAccountRecoveryEmail = server.SendCustomAccountRecoveryEmail(
-    {
-        EmailTemplateId: emailTemplateId
-    });
-    return(SendCustomAccountRecoveryEmail);
-}//emailTemplateId
-function SendCustomAccountRecoveryEmail(emailTemplateId, email)
-{
-    var SendCustomAccountRecoveryEmail = server.SendCustomAccountRecoveryEmail(
-    {
-        EmailTemplateId: emailTemplateId,
-        Email: email
-    });
-    return(SendCustomAccountRecoveryEmail);
-}//emailTemplateId, email
+}
+/**
+ * Forces an email to be sent to the registered contact email address for the user's account based on an account recovery email template
+ * @param {string} emailTemplateId
+ * *REQUIRED* The email template id of the account recovery email template to send.
+ * @param {string} email
+ * User email address attached to their account
+ * @param {string} username
+ * The user's username requesting an account recovery.
+ */
 function SendCustomAccountRecoveryEmail(emailTemplateId, email, username)
 {
     var SendCustomAccountRecoveryEmail = server.SendCustomAccountRecoveryEmail(
@@ -375,7 +420,14 @@ function SendCustomAccountRecoveryEmail(emailTemplateId, email, username)
         Username: username
     });
     return(SendCustomAccountRecoveryEmail);
-}//emailTemplateId, email, username
+}
+/**
+ * Sends an email based on an email template to a player's contact email
+ * @param {string} emailTemplateId
+ * *REQUIRED* The email template id of the email template to send.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function SendEmailFromTemplate(emailTemplateId, playFabId)
 {
     var SendEmailFromTemplate = server.SendEmailFromTemplate(
@@ -384,57 +436,22 @@ function SendEmailFromTemplate(emailTemplateId, playFabId)
         PlayFabId: playFabId
     });
     return(SendEmailFromTemplate);
-}//emailTemplateId, playFabId
-function SendPushNotification(recipient)
-{
-    var SendPushNotification = server.SendPushNotification(
-    {
-        Recipient: recipient
-    });
-    return(SendPushNotification);
-}//recipient
-function SendPushNotification(recipient, advancedPlatformDelivery)
-{
-    var SendPushNotification = server.SendPushNotification(
-    {
-        Recipient: recipient,
-        AdvancedPlatformDelivery: advancedPlatformDelivery
-    });
-    return(SendPushNotification);
-}//recipient, advancedPlatformDelivery
-function SendPushNotification(recipient, advancedPlatformDelivery, message)
-{
-    var SendPushNotification = server.SendPushNotification(
-    {
-        Recipient: recipient,
-        AdvancedPlatformDelivery: advancedPlatformDelivery,
-        Message: message
-    });
-    return(SendPushNotification);
-}//recipient, advancedPlatformDelivery, message
-function SendPushNotification(recipient, advancedPlatformDelivery, message, package)
-{
-    var SendPushNotification = server.SendPushNotification(
-    {
-        Recipient: recipient,
-        AdvancedPlatformDelivery: advancedPlatformDelivery,
-        Message: message,
-        Package: package
-    });
-    return(SendPushNotification);
-}//recipient, advancedPlatformDelivery, message, package
-function SendPushNotification(recipient, advancedPlatformDelivery, message, package, subject)
-{
-    var SendPushNotification = server.SendPushNotification(
-    {
-        Recipient: recipient,
-        AdvancedPlatformDelivery: advancedPlatformDelivery,
-        Message: message,
-        Package: package,
-        Subject: subject
-    });
-    return(SendPushNotification);
-}//recipient, advancedPlatformDelivery, message, package, subject
+}
+/**
+ * Sends an iOS/Android Push Notification to a specific user, if that user's device has been configured for Push Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be notified.
+ * @param {string} recipient
+ * *REQUIRED* PlayFabId of the recipient of the push notification.
+ * @param {AdvancedPushPlatformMsg[]} advancedPlatformDelivery
+ * Allows you to provide precisely formatted json to target devices. This is an advanced feature, allowing you to deliver to custom plugin logic, fields, or functionality not natively supported by PlayFab.
+ * @param {string} message
+ * Text of message to send.
+ * @param {PushNotificationPackage} package
+ * Defines all possible push attributes like message, title, icon, etc. Some parameters are device specific - please see the PushNotificationPackage documentation for details.
+ * @param {string} subject
+ * Subject of message to send (may not be displayed in all platforms)
+ * @param {string[]} targetPlatforms
+ * Target Platforms that should receive the Message or Package. If omitted, we will send to all available platforms.
+ */
 function SendPushNotification(recipient, advancedPlatformDelivery, message, package, subject, targetPlatforms)
 {
     var SendPushNotification = server.SendPushNotification(
@@ -447,7 +464,14 @@ function SendPushNotification(recipient, advancedPlatformDelivery, message, pack
         TargetPlatforms: targetPlatforms
     });
     return(SendPushNotification);
-}//recipient, advancedPlatformDelivery, message, package, subject, targetPlatforms
+}
+/**
+ * Sends an iOS/Android Push Notification template to a specific user, if that user's device has been configured for Push Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be notified.
+ * @param {string} pushNotificationTemplateId
+ * *REQUIRED* Id of the push notification template.
+ * @param {string} recipient
+ * *REQUIRED* PlayFabId of the push notification recipient.
+ */
 function SendPushNotificationFromTemplate(pushNotificationTemplateId, recipient)
 {
     var SendPushNotificationFromTemplate = server.SendPushNotificationFromTemplate(
@@ -456,7 +480,12 @@ function SendPushNotificationFromTemplate(pushNotificationTemplateId, recipient)
         Recipient: recipient
     });
     return(SendPushNotificationFromTemplate);
-}//pushNotificationTemplateId, recipient
+}
+/**
+ * Unlinks the related Nintendo account from the user's PlayFab account
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function UnlinkNintendoServiceAccount(playFabId)
 {
     var UnlinkNintendoServiceAccount = server.UnlinkNintendoServiceAccount(
@@ -464,15 +493,14 @@ function UnlinkNintendoServiceAccount(playFabId)
         PlayFabId: playFabId
     });
     return(UnlinkNintendoServiceAccount);
-}//playFabId
-function UnlinkNintendoSwitchDeviceId(playFabId)
-{
-    var UnlinkNintendoSwitchDeviceId = server.UnlinkNintendoSwitchDeviceId(
-    {
-        PlayFabId: playFabId
-    });
-    return(UnlinkNintendoSwitchDeviceId);
-}//playFabId
+}
+/**
+ * Unlinks the related NintendoSwitchDeviceId from the user's PlayFab account
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} nintendoSwitchDeviceId
+ * Nintendo Switch Device identifier for the user. If not specified, the most recently signed in device ID will be used.
+ */
 function UnlinkNintendoSwitchDeviceId(playFabId, nintendoSwitchDeviceId)
 {
     var UnlinkNintendoSwitchDeviceId = server.UnlinkNintendoSwitchDeviceId(
@@ -481,7 +509,12 @@ function UnlinkNintendoSwitchDeviceId(playFabId, nintendoSwitchDeviceId)
         NintendoSwitchDeviceId: nintendoSwitchDeviceId
     });
     return(UnlinkNintendoSwitchDeviceId);
-}//playFabId, nintendoSwitchDeviceId
+}
+/**
+ * Unlinks the related PlayStation ™️ Network account from the user's PlayFab account
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function UnlinkPSNAccount(playFabId)
 {
     var UnlinkPSNAccount = server.UnlinkPSNAccount(
@@ -489,7 +522,14 @@ function UnlinkPSNAccount(playFabId)
         PlayFabId: playFabId
     });
     return(UnlinkPSNAccount);
-}//playFabId
+}
+/**
+ * Unlinks the custom server identifier from the user's PlayFab account.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab identifier.
+ * @param {string} serverCustomId
+ * *REQUIRED* Unique server custom identifier for this player.
+ */
 function UnlinkServerCustomId(playFabId, serverCustomId)
 {
     var UnlinkServerCustomId = server.UnlinkServerCustomId(
@@ -498,7 +538,12 @@ function UnlinkServerCustomId(playFabId, serverCustomId)
         ServerCustomId: serverCustomId
     });
     return(UnlinkServerCustomId);
-}//playFabId, serverCustomId
+}
+/**
+ * Unlinks the related Xbox Live account from the user's PlayFab account
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
+ */
 function UnlinkXboxAccount(playFabId)
 {
     var UnlinkXboxAccount = server.UnlinkXboxAccount(
@@ -506,7 +551,14 @@ function UnlinkXboxAccount(playFabId)
         PlayFabId: playFabId
     });
     return(UnlinkXboxAccount);
-}//playFabId
+}
+/**
+ * Update the avatar URL of the specified player
+ * @param {string} imageUrl
+ * *REQUIRED* URL of the avatar image. If empty, it removes the existing avatar URL.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function UpdateAvatarUrl(imageUrl, playFabId)
 {
     var UpdateAvatarUrl = server.UpdateAvatarUrl(
@@ -515,7 +567,12 @@ function UpdateAvatarUrl(imageUrl, playFabId)
         PlayFabId: playFabId
     });
     return(UpdateAvatarUrl);
-}//imageUrl, playFabId
+}
+/**
+ * Updates information of a list of existing bans specified with Ban Ids.
+ * @param {UpdateBanRequest[]} bans
+ * *REQUIRED* List of bans to be updated. Maximum 100.
+ */
 function UpdateBans(bans)
 {
     var UpdateBans = server.UpdateBans(
@@ -523,31 +580,23 @@ function UpdateBans(bans)
         Bans: bans
     });
     return(UpdateBans);
-}//bans
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Analytics
 //-------------------------------------------------------------------------------------------------------------------------------
-function WriteCharacterEvent(characterId, eventName, playFabId)
-{
-    var WriteCharacterEvent = server.WriteCharacterEvent(
-    {
-        CharacterId: characterId,
-        EventName: eventName,
-        PlayFabId: playFabId
-    });
-    return(WriteCharacterEvent);
-}//characterId, eventName, playFabId
-function WriteCharacterEvent(characterId, eventName, playFabId, body)
-{
-    var WriteCharacterEvent = server.WriteCharacterEvent(
-    {
-        CharacterId: characterId,
-        EventName: eventName,
-        PlayFabId: playFabId,
-        Body: body
-    });
-    return(WriteCharacterEvent);
-}//characterId, eventName, playFabId, body
+/**
+ * Writes a character-based event into PlayStream.
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} eventName
+ * *REQUIRED* The name of the event, within the namespace scoped to the title. The naming convention is up to the caller, but it commonly follows the subject_verb_object pattern (e.g. player_logged_in).
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {object} body
+ * Custom event properties. Each property consists of a name (string) and a value (JSON object).
+ * @param {string} timestamp
+ * The time (in UTC) associated with this event. The value defaults to the current time.
+ */
 function WriteCharacterEvent(characterId, eventName, playFabId, body, timestamp)
 {
     var WriteCharacterEvent = server.WriteCharacterEvent(
@@ -559,26 +608,18 @@ function WriteCharacterEvent(characterId, eventName, playFabId, body, timestamp)
         Timestamp: timestamp
     });
     return(WriteCharacterEvent);
-}//characterId, eventName, playFabId, body, timestamp
-function WritePlayerEvent(eventName, playFabId)
-{
-    var WritePlayerEvent = server.WritePlayerEvent(
-    {
-        EventName: eventName,
-        PlayFabId: playFabId
-    });
-    return(WritePlayerEvent);
-}//eventName, playFabId
-function WritePlayerEvent(eventName, playFabId, body)
-{
-    var WritePlayerEvent = server.WritePlayerEvent(
-    {
-        EventName: eventName,
-        PlayFabId: playFabId,
-        Body: body
-    });
-    return(WritePlayerEvent);
-}//eventName, playFabId, body
+}
+/**
+ * Writes a player-based event into PlayStream.
+ * @param {string} eventName
+ * *REQUIRED* The name of the event, within the namespace scoped to the title. The naming convention is up to the caller, but it commonly follows the subject_verb_object pattern (e.g. player_logged_in).
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {object} body
+ * Custom data properties associated with the event. Each property consists of a name (string) and a value (JSON object).
+ * @param {string} timestamp
+ * The time (in UTC) associated with this event. The value defaults to the current time.
+ */
 function WritePlayerEvent(eventName, playFabId, body, timestamp)
 {
     var WritePlayerEvent = server.WritePlayerEvent(
@@ -589,24 +630,16 @@ function WritePlayerEvent(eventName, playFabId, body, timestamp)
         Timestamp: timestamp
     });
     return(WritePlayerEvent);
-}//eventName, playFabId, body, timestamp
-function WriteTitleEvent(eventName)
-{
-    var WriteTitleEvent = server.WriteTitleEvent(
-    {
-        EventName: eventName
-    });
-    return(WriteTitleEvent);
-}//eventName
-function WriteTitleEvent(eventName, body)
-{
-    var WriteTitleEvent = server.WriteTitleEvent(
-    {
-        EventName: eventName,
-        Body: body
-    });
-    return(WriteTitleEvent);
-}//eventName, body
+}
+/**
+ * Writes a title-based event into PlayStream.
+ * @param {string} eventName
+ * *REQUIRED* The name of the event, within the namespace scoped to the title. The naming convention is up to the caller, but it commonly follows the subject_verb_object pattern (e.g. player_logged_in).
+ * @param {object} body
+ * Custom event properties. Each property consists of a name (string) and a value (JSON object).
+ * @param {string} timestamp
+ * The time (in UTC) associated with this event. The value defaults to the current time.
+ */
 function WriteTitleEvent(eventName, body, timestamp)
 {
     var WriteTitleEvent = server.WriteTitleEvent(
@@ -616,52 +649,34 @@ function WriteTitleEvent(eventName, body, timestamp)
         Timestamp: timestamp
     });
     return(WriteTitleEvent);
-}//eventName, body, timestamp
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Authentication
 //-------------------------------------------------------------------------------------------------------------------------------
-function AuthenticateSessionTicket(sessionTicket)
-{
-    var AuthenticateSessionTicket = server.AuthenticateSessionTicket(
-    {
+/**
+ * Validated a client's session ticket, and if successful, returns details for that user
+ * @param {string} sessionTicket
+ * *REQUIRED* Session ticket as issued by a PlayFab client login API.
+ */
+ function AuthenticateSessionTicket(sessionTicket)
+ {
+     var AuthenticateSessionTicket = server.AuthenticateSessionTicket(
+     {
         SessionTicket: sessionTicket
-    });
-    return(AuthenticateSessionTicket);
-}//sessionTicket
-function LoginWithServerCustomId()
-{
-    var LoginWithServerCustomId = server.LoginWithServerCustomId(
-    {
-    });
-    return(LoginWithServerCustomId);
-}//
-function LoginWithServerCustomId(createAccount)
-{
-    var LoginWithServerCustomId = server.LoginWithServerCustomId(
-    {
-        CreateAccount: createAccount
-    });
-    return(LoginWithServerCustomId);
-}//createAccount
-function LoginWithServerCustomId(createAccount, infoRequestParameters)
-{
-    var LoginWithServerCustomId = server.LoginWithServerCustomId(
-    {
-        CreateAccount: createAccount,
-        InfoRequestParameters: infoRequestParameters
-    });
-    return(LoginWithServerCustomId);
-}//createAccount, infoRequestParameters
-function LoginWithServerCustomId(createAccount, infoRequestParameters, playerSecret)
-{
-    var LoginWithServerCustomId = server.LoginWithServerCustomId(
-    {
-        CreateAccount: createAccount,
-        InfoRequestParameters: infoRequestParameters,
-        PlayerSecret: playerSecret
-    });
-    return(LoginWithServerCustomId);
-}//createAccount, infoRequestParameters, playerSecret
+     });
+     return(AuthenticateSessionTicket);
+ }
+/**
+ * Securely login a game client from an external server backend using a custom identifier for that player. Server Custom ID and Client Custom ID are mutually exclusive and cannot be used to retrieve the same player account.
+ * @param {boolean} createAccount
+ * Automatically create a PlayFab account if one is not currently linked to this ID.
+ * @param {GetPlayerCombinedInfoRequestParams} infoRequestParameters
+ * Flags for which pieces of info to return for the user.
+ * @param {string} playerSecret
+ * Player secret that is used to verify API request signatures (Enterprise Only).
+ * @param {string} serverCustomId
+ * The backend server identifier for this player.
+ */
 function LoginWithServerCustomId(createAccount, infoRequestParameters, playerSecret, serverCustomId)
 {
     var LoginWithServerCustomId = server.LoginWithServerCustomId(
@@ -672,24 +687,16 @@ function LoginWithServerCustomId(createAccount, infoRequestParameters, playerSec
         ServerCustomId: serverCustomId
     });
     return(LoginWithServerCustomId);
-}//createAccount, infoRequestParameters, playerSecret, serverCustomId
-function LoginWithSteamId(steamId)
-{
-    var LoginWithSteamId = server.LoginWithSteamId(
-    {
-        SteamId: steamId
-    });
-    return(LoginWithSteamId);
-}//steamId
-function LoginWithSteamId(steamId, createAccount)
-{
-    var LoginWithSteamId = server.LoginWithSteamId(
-    {
-        SteamId: steamId,
-        CreateAccount: createAccount
-    });
-    return(LoginWithSteamId);
-}//steamId, createAccount
+}
+/**
+ * Signs the user in using an Steam ID, returning a session identifier that can subsequently be used for API calls which require an authenticated user
+ * @param {string} steamId
+ * *REQUIRED* Unique Steam identifier for a user
+ * @param {boolean} createAccount
+ * Automatically create a PlayFab account if one is not currently linked to this ID.
+ * @param {GetPlayerCombinedInfoRequestParams} infoRequestParameters
+ * Flags for which pieces of info to return for the user.
+ */
 function LoginWithSteamId(steamId, createAccount, infoRequestParameters)
 {
     var LoginWithSteamId = server.LoginWithSteamId(
@@ -699,24 +706,16 @@ function LoginWithSteamId(steamId, createAccount, infoRequestParameters)
         InfoRequestParameters: infoRequestParameters
     });
     return(LoginWithSteamId);
-}//steamId, createAccount, infoRequestParameters
-function LoginWithXbox(xboxToken)
-{
-    var LoginWithXbox = server.LoginWithXbox(
-    {
-        XboxToken: xboxToken
-    });
-    return(LoginWithXbox);
-}//xboxToken
-function LoginWithXbox(xboxToken, createAccount)
-{
-    var LoginWithXbox = server.LoginWithXbox(
-    {
-        XboxToken: xboxToken,
-        CreateAccount: createAccount
-    });
-    return(LoginWithXbox);
-}//xboxToken, createAccount
+}
+/**
+ * Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier that can subsequently be used for API calls which require an authenticated user
+ * @param {string} xboxToken
+ * *REQUIRED* Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", "").
+ * @param {boolean} createAccount
+ * Automatically create a PlayFab account if one is not currently linked to this ID.
+ * @param {GetPlayerCombinedInfoRequestParams} infoRequestParameters
+ * Flags for which pieces of info to return for the user.
+ */
 function LoginWithXbox(xboxToken, createAccount, infoRequestParameters)
 {
     var LoginWithXbox = server.LoginWithXbox(
@@ -726,26 +725,18 @@ function LoginWithXbox(xboxToken, createAccount, infoRequestParameters)
         InfoRequestParameters: infoRequestParameters
     });
     return(LoginWithXbox);
-}//xboxToken, createAccount, infoRequestParameters
-function LoginWithXboxId(sandbox, xboxId)
-{
-    var LoginWithXboxId = server.LoginWithXboxId(
-    {
-        Sandbox: sandbox,
-        XboxId: xboxId
-    });
-    return(LoginWithXboxId);
-}//sandbox, xboxId
-function LoginWithXboxId(sandbox, xboxId, createAccount)
-{
-    var LoginWithXboxId = server.LoginWithXboxId(
-    {
-        Sandbox: sandbox,
-        XboxId: xboxId,
-        CreateAccount: createAccount
-    });
-    return(LoginWithXboxId);
-}//sandbox, xboxId, createAccount
+}
+/**
+ * Signs the user in using an Xbox ID and Sandbox ID, returning a session identifier that can subsequently be used for API calls which require an authenticated user
+ * @param {string} sandbox
+ * *REQUIRED* The id of Xbox Live sandbox.
+ * @param {string} xboxId
+ * *REQUIRED* Unique Xbox identifier for a user
+ * @param {boolean} createAccount
+ * Automatically create a PlayFab account if one is not currently linked to this ID.
+ * @param {GetPlayerCombinedInfoRequestParams} infoRequestParameters
+ * Flags for which pieces of info to return for the user.
+ */
 function LoginWithXboxId(sandbox, xboxId, createAccount, infoRequestParameters)
 {
     var LoginWithXboxId = server.LoginWithXboxId(
@@ -756,15 +747,14 @@ function LoginWithXboxId(sandbox, xboxId, createAccount, infoRequestParameters)
         InfoRequestParameters: infoRequestParameters
     });
     return(LoginWithXboxId);
-}//sandbox, xboxId, createAccount, infoRequestParameters
-function SetPlayerSecret(playFabId)
-{
-    var SetPlayerSecret = server.SetPlayerSecret(
-    {
-        PlayFabId: playFabId
-    });
-    return(SetPlayerSecret);
-}//playFabId
+}
+/**
+ * Sets the player's secret if it is not already set. Player secrets are used to sign API requests. To reset a player's secret use the Admin or Server API method SetPlayerSecret.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} playerSecret
+ * Player secret that is used to verify API request signatures (Enterprise Only).
+ */
 function SetPlayerSecret(playFabId, playerSecret)
 {
     var SetPlayerSecret = server.SetPlayerSecret(
@@ -773,29 +763,21 @@ function SetPlayerSecret(playFabId, playerSecret)
         PlayerSecret: playerSecret
     });
     return(SetPlayerSecret);
-}//playFabId, playerSecret
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Character Data
 //-------------------------------------------------------------------------------------------------------------------------------
-function GetCharacterData(characterId, playFabId)
-{
-    var GetCharacterData = server.GetCharacterData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(GetCharacterData);
-}//characterId, playFabId
-function GetCharacterData(characterId, playFabId, ifChangedFromDataVersion)
-{
-    var GetCharacterData = server.GetCharacterData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetCharacterData);
-}//characterId, playFabId, ifChangedFromDataVersion
+/**
+ * Retrieves the title-specific custom data for the user which is readable and writable by the client
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {number} ifChangedFromDataVersion
+ * The version that currently exists according to the caller. The call will return the data for all of the keys if the version in the system is greater than this.
+ * @param {string[]} keys
+ * Specific keys to search for in the custom user data.
+ */
 function GetCharacterData(characterId, playFabId, ifChangedFromDataVersion, keys)
 {
     var GetCharacterData = server.GetCharacterData(
@@ -806,26 +788,18 @@ function GetCharacterData(characterId, playFabId, ifChangedFromDataVersion, keys
         Keys: keys
     });
     return(GetCharacterData);
-}//characterId, playFabId, ifChangedFromDataVersion, keys
-function GetCharacterInternalData(characterId, playFabId)
-{
-    var GetCharacterInternalData = server.GetCharacterInternalData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(GetCharacterInternalData);
-}//characterId, playFabId
-function GetCharacterInternalData(characterId, playFabId, ifChangedFromDataVersion)
-{
-    var GetCharacterInternalData = server.GetCharacterInternalData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetCharacterInternalData);
-}//characterId, playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the title-specific custom data for the user's character which cannot be accessed by the client
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {number} ifChangedFromDataVersion
+ * The version that currently exists according to the caller. The call will return the data for all of the keys if the version in the system is greater than this.
+ * @param {string[]} keys
+ * Specific keys to search for in the custom user data.
+ */
 function GetCharacterInternalData(characterId, playFabId, ifChangedFromDataVersion, keys)
 {
     var GetCharacterInternalData = server.GetCharacterInternalData(
@@ -836,26 +810,18 @@ function GetCharacterInternalData(characterId, playFabId, ifChangedFromDataVersi
         Keys: keys
     });
     return(GetCharacterInternalData);
-}//characterId, playFabId, ifChangedFromDataVersion, keys
-function GetCharacterReadOnlyData(characterId, playFabId)
-{
-    var GetCharacterReadOnlyData = server.GetCharacterReadOnlyData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(GetCharacterReadOnlyData);
-}//characterId, playFabId
-function GetCharacterReadOnlyData(characterId, playFabId, ifChangedFromDataVersion)
-{
-    var GetCharacterReadOnlyData = server.GetCharacterReadOnlyData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetCharacterReadOnlyData);
-}//characterId, playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the title-specific custom data for the user's character which can only be read by the client
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {number} ifChangedFromDataVersion
+ * The version that currently exists according to the caller. The call will return the data for all of the keys if the version in the system is greater than this.
+ * @param {string[]} keys
+ * Specific keys to search for in the custom user data.
+ */
 function GetCharacterReadOnlyData(characterId, playFabId, ifChangedFromDataVersion, keys)
 {
     var GetCharacterReadOnlyData = server.GetCharacterReadOnlyData(
@@ -866,37 +832,20 @@ function GetCharacterReadOnlyData(characterId, playFabId, ifChangedFromDataVersi
         Keys: keys
     });
     return(GetCharacterReadOnlyData);
-}//characterId, playFabId, ifChangedFromDataVersion, keys
-function UpdateCharacterData(characterId, playFabId)
-{
-    var UpdateCharacterData = server.UpdateCharacterData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(UpdateCharacterData);
-}//characterId, playFabId
-function UpdateCharacterData(characterId, playFabId, data)
-{
-    var UpdateCharacterData = server.UpdateCharacterData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateCharacterData);
-}//characterId, playFabId, data
-function UpdateCharacterData(characterId, playFabId, data, keysToRemove)
-{
-    var UpdateCharacterData = server.UpdateCharacterData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateCharacterData);
-}//characterId, playFabId, data, keysToRemove
+}
+/**
+ * Updates the title-specific custom data for the user's character which is readable and writable by the client
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {object} data
+ * Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
+ * @param {string[]} keysToRemove
+ * Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
+ * @param {UserDataPermission} permission
+ * Permission to be applied to all user data keys written in this request. Defaults to "private" if not set.
+ */
 function UpdateCharacterData(characterId, playFabId, data, keysToRemove, permission)
 {
     var UpdateCharacterData = server.UpdateCharacterData(
@@ -908,37 +857,20 @@ function UpdateCharacterData(characterId, playFabId, data, keysToRemove, permiss
         Permission: permission
     });
     return(UpdateCharacterData);
-}//characterId, playFabId, data, keysToRemove, permission
-function UpdateCharacterInternalData(characterId, playFabId)
-{
-    var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(UpdateCharacterInternalData);
-}//characterId, playFabId
-function UpdateCharacterInternalData(characterId, playFabId, data)
-{
-    var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateCharacterInternalData);
-}//characterId, playFabId, data
-function UpdateCharacterInternalData(characterId, playFabId, data, keysToRemove)
-{
-    var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateCharacterInternalData);
-}//characterId, playFabId, data, keysToRemove
+}
+/**
+ * Updates the title-specific custom data for the user's character which cannot be accessed by the client
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {object} data
+ * Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
+ * @param {string[]} keysToRemove
+ * Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
+ * @param {UserDataPermission} permission
+ * Permission to be applied to all user data keys written in this request. Defaults to "private" if not set.
+ */
 function UpdateCharacterInternalData(characterId, playFabId, data, keysToRemove, permission)
 {
     var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
@@ -950,37 +882,20 @@ function UpdateCharacterInternalData(characterId, playFabId, data, keysToRemove,
         Permission: permission
     });
     return(UpdateCharacterInternalData);
-}//characterId, playFabId, data, keysToRemove, permission
-function UpdateCharacterReadOnlyData(characterId, playFabId)
-{
-    var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(UpdateCharacterReadOnlyData);
-}//characterId, playFabId
-function UpdateCharacterReadOnlyData(characterId, playFabId, data)
-{
-    var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateCharacterReadOnlyData);
-}//characterId, playFabId, data
-function UpdateCharacterReadOnlyData(characterId, playFabId, data, keysToRemove)
-{
-    var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateCharacterReadOnlyData);
-}//characterId, playFabId, data, keysToRemove
+}
+/**
+ * Updates the title-specific custom data for the user's character which can only be read by the client
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {object} data
+ * Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
+ * @param {string[]} keysToRemove
+ * Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
+ * @param {UserDataPermission} permission
+ * Permission to be applied to all user data keys written in this request. Defaults to "private" if not set.
+ */
 function UpdateCharacterReadOnlyData(characterId, playFabId, data, keysToRemove, permission)
 {
     var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
@@ -992,10 +907,19 @@ function UpdateCharacterReadOnlyData(characterId, playFabId, data, keysToRemove,
         Permission: permission
     });
     return(UpdateCharacterReadOnlyData);
-}//characterId, playFabId, data, keysToRemove, permission
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Characters
 //-------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Deletes the specific character ID from the specified user.
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {boolean} saveCharacterInventory
+ * *REQUIRED* If true, the character's inventory will be transferred up to the owning user; otherwise, this request will purge those items.
+ */
 function DeleteCharacterFromUser(characterId, playFabId, saveCharacterInventory)
 {
     var DeleteCharacterFromUser = server.DeleteCharacterFromUser(
@@ -1005,7 +929,12 @@ function DeleteCharacterFromUser(characterId, playFabId, saveCharacterInventory)
         SaveCharacterInventory: saveCharacterInventory
     });
     return(DeleteCharacterFromUser);
-}//characterId, playFabId, saveCharacterInventory
+}
+/**
+ * Lists all of the characters that belong to a specific user. CharacterIds are not globally unique; characterId must be evaluated with the parent PlayFabId to guarantee uniqueness.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function GetAllUsersCharacters(playFabId)
 {
     var GetAllUsersCharacters = server.GetAllUsersCharacters(
@@ -1013,7 +942,16 @@ function GetAllUsersCharacters(playFabId)
         PlayFabId: playFabId
     });
     return(GetAllUsersCharacters);
-}//playFabId
+}
+/**
+ * Retrieves a list of ranked characters for the given statistic, starting from the indicated point in the leaderboard
+ * @param {number} maxResultsCount
+ * *REQUIRED* Maximum number of entries to retrieve.
+ * @param {number} startPosition
+ * *REQUIRED* First entry in the leaderboard to be retrieved.
+ * @param {string} statisticName
+ * *REQUIRED* Unique identifier for the title-specific statistic for the leaderboard.
+ */
 function GetCharacterLeaderboard(maxResultsCount, startPosition, statisticName)
 {
     var GetCharacterLeaderboard = server.GetCharacterLeaderboard(
@@ -1023,7 +961,14 @@ function GetCharacterLeaderboard(maxResultsCount, startPosition, statisticName)
         StatisticName: statisticName
     });
     return(GetCharacterLeaderboard);
-}//maxResultsCount, startPosition, statisticName
+}
+/**
+ * Retrieves the details of all title-specific statistics for the specific character
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function GetCharacterStatistics(characterId, playFabId)
 {
     var GetCharacterStatistics = server.GetCharacterStatistics(
@@ -1032,7 +977,18 @@ function GetCharacterStatistics(characterId, playFabId)
         PlayFabId: playFabId
     });
     return(GetCharacterStatistics);
-}//characterId, playFabId
+}
+/**
+ * Retrieves a list of ranked characters for the given statistic, centered on the requested user
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {number} maxResultsCount
+ * *REQUIRED* Maximum number of entries to retrieve.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} statisticName
+ * *REQUIRED* Unique identifier for the title-specific statistic for the leaderboard.
+ */
 function GetLeaderboardAroundCharacter(characterId, maxResultsCount, playFabId, statisticName)
 {
     var GetLeaderboardAroundCharacter = server.GetLeaderboardAroundCharacter(
@@ -1043,7 +999,14 @@ function GetLeaderboardAroundCharacter(characterId, maxResultsCount, playFabId, 
         StatisticName: statisticName
     });
     return(GetLeaderboardAroundCharacter);
-}//characterId, maxResultsCount, playFabId, statisticName
+}
+/**
+ * Retrieves a list of all of the user's characters for the given statistic.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} statisticName
+ * *REQUIRED* Unique identifier for the title-specific statistic for the leaderboard.
+ */
 function GetLeaderboardForUserCharacters(playFabId, statisticName)
 {
     var GetLeaderboardForUserCharacters = server.GetLeaderboardForUserCharacters(
@@ -1052,7 +1015,16 @@ function GetLeaderboardForUserCharacters(playFabId, statisticName)
         StatisticName: statisticName
     });
     return(GetLeaderboardForUserCharacters);
-}//playFabId, statisticName
+}
+/**
+ * Grants the specified character type to the user. CharacterIds are not globally unique; characterId must be evaluated with the parent PlayFabId to guarantee uniqueness.
+ * @param {string} characterName
+ * *REQUIRED* Non-unique display name of the character being granted (1-40 characters in length).
+ * @param {string} characterType
+ * *REQUIRED* Type of the character being granted; statistics can be sliced based on this value.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function GrantCharacterToUser(characterName, characterType, playFabId)
 {
     var GrantCharacterToUser = server.GrantCharacterToUser(
@@ -1062,16 +1034,16 @@ function GrantCharacterToUser(characterName, characterType, playFabId)
         PlayFabId: playFabId
     });
     return(GrantCharacterToUser);
-}//characterName, characterType, playFabId
-function UpdateCharacterStatistics(characterId, playFabId)
-{
-    var UpdateCharacterStatistics = server.UpdateCharacterStatistics(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(UpdateCharacterStatistics);
-}//characterId, playFabId
+}
+/**
+ * Updates the values of the specified title-specific statistics for the specific character
+ * @param {string} characterId
+ * *REQUIRED* Unique PlayFab assigned ID for a specific character owned by a user
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {object} characterStatistics
+ * Statistics to be updated with the provided values.
+ */
 function UpdateCharacterStatistics(characterId, playFabId, characterStatistics)
 {
     var UpdateCharacterStatistics = server.UpdateCharacterStatistics(
@@ -1081,27 +1053,19 @@ function UpdateCharacterStatistics(characterId, playFabId, characterStatistics)
         CharacterStatistics: characterStatistics
     });
     return(UpdateCharacterStatistics);
-}//characterId, playFabId, characterStatistics
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Content
 //-------------------------------------------------------------------------------------------------------------------------------
-function GetContentDownloadUrl(key)
-{
-    var GetContentDownloadUrl = server.GetContentDownloadUrl(
-    {
-        Key: key
-    });
-    return(GetContentDownloadUrl);
-}//key
-function GetContentDownloadUrl(key, httpMethod)
-{
-    var GetContentDownloadUrl = server.GetContentDownloadUrl(
-    {
-        Key: key,
-        HttpMethod: httpMethod
-    });
-    return(GetContentDownloadUrl);
-}//key, httpMethod
+/**
+ * This API retrieves a pre-signed URL for accessing a content file for the title. A subsequent HTTP GET to the returned URL will attempt to download the content. A HEAD query to the returned URL will attempt to retrieve the metadata of the content. Note that a successful result does not guarantee the existence of this content - if it has not been uploaded, the query to retrieve the data will fail. See this post for more information: https://community.playfab.com/hc/community/posts/205469488-How-to-upload-files-to-PlayFab-s-Content-Service. Also, please be aware that the Content service is specifically PlayFab's CDN offering, for which standard CDN rates apply.
+ * @param {string} key
+ * *REQUIRED* Key of the content item to fetch, usually formatted as a path, e.g. images/a.png
+ * @param {string} httpMethod
+ * HTTP method to fetch item - GET or HEAD. Use HEAD when only fetching metadata. Default is GET.
+ * @param {boolean} thruCDN
+ * True to download through CDN. CDN provides higher download bandwidth and lower latency. However, if you want the latest, non-cached version of the content during development, set this to false. Default is true.
+ */
 function GetContentDownloadUrl(key, httpMethod, thruCDN)
 {
     var GetContentDownloadUrl = server.GetContentDownloadUrl(
@@ -1111,73 +1075,46 @@ function GetContentDownloadUrl(key, httpMethod, thruCDN)
         ThruCDN: thruCDN
     });
     return(GetContentDownloadUrl);
-}//key, httpMethod, thruCDN
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Friend List Management
 //-------------------------------------------------------------------------------------------------------------------------------
-function AddFriend(playFabId, friendEmail)
+/**
+ * Adds the Friend user to the friendlist of the user with PlayFabId. At least one of FriendPlayFabId,FriendUsername,FriendEmail, or FriendTitleDisplayName should be initialized.
+ * @param {string} playFabId
+ * *REQUIRED* PlayFab identifier of the player to add a new friend.
+ * @param {string} friendEmail
+ * Email address of the user being added.
+ * @param {string} friendPlayFabId
+ * The PlayFab identifier of the user being added.
+ * @param {string} friendTitleDisplayName
+ * Title-specific display name of the user to being added.
+ * @param {string} friendUsername
+ * The PlayFab username of the user being added
+ */
+function AddFriend(playFabId, friendEmail, friendPlayFabId, friendTitleDisplayName, friendUsername)
 {
     var AddFriend = server.AddFriend(
     {
         PlayFabId: playFabId,
-        FriendEmail: friendEmail
-    });
-    return(AddFriend);
-}//playFabId, friendEmail
-function AddFriend(playFabId, friendPlayFabId)
-{
-    var AddFriend = server.AddFriend(
-    {
-        PlayFabId: playFabId,
-        FriendPlayFabId: friendPlayFabId
-    });
-    return(AddFriend);
-}//playFabId, friendPlayFabId
-function AddFriend(playFabId, friendTitleDisplayName)
-{
-    var AddFriend = server.AddFriend(
-    {
-        PlayFabId: playFabId,
-        FriendTitleDisplayName: friendTitleDisplayName
-    });
-    return(AddFriend);
-}//playFabId, friendTitleDisplayName
-function AddFriend(playFabId, friendUsername)
-{
-    var AddFriend = server.AddFriend(
-    {
-        PlayFabId: playFabId,
+        FriendEmail: friendEmail,
+        FriendPlayFabId: friendPlayFabId,
+        FriendTitleDisplayName: friendTitleDisplayName,
         FriendUsername: friendUsername
     });
     return(AddFriend);
-}//playFabId, friendUsername
-function GetFriendsList(playFabId)
-{
-    var GetFriendsList = server.GetFriendsList(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetFriendsList);
-}//playFabId
-function GetFriendsList(playFabId, externalPlatformFriends)
-{
-    var GetFriendsList = server.GetFriendsList(
-    {
-        PlayFabId: playFabId,
-        ExternalPlatformFriends: externalPlatformFriends
-    });
-    return(GetFriendsList);
-}//playFabId, externalPlatformFriends
-function GetFriendsList(playFabId, externalPlatformFriends, profileConstraints)
-{
-    var GetFriendsList = server.GetFriendsList(
-    {
-        PlayFabId: playFabId,
-        ExternalPlatformFriends: externalPlatformFriends,
-        ProfileConstraints: profileConstraints
-    });
-    return(GetFriendsList);
-}//playFabId, externalPlatformFriends, profileConstraints
+}
+/**
+ * Retrieves the current friends for the user with PlayFabId, constrained to users who have PlayFab accounts. Friends from linked accounts (Facebook, Steam) are also included. You may optionally exclude some linked services' friends.
+ * @param {string} playFabId
+ * *REQUIRED* PlayFab identifier of the player whose friend list to get.
+ * @param {ExternalFriendSources} externalPlatformFriends
+ * Indicates which other platforms' friends should be included in the response. In HTTP, it is represented as a comma-separated list of platforms.
+ * @param {PlayerProfileViewConstraints} profileConstraints
+ * If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
+ * @param {string} xboxToken
+ * Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
+ */
 function GetFriendsList(playFabId, externalPlatformFriends, profileConstraints, xboxToken)
 {
     var GetFriendsList = server.GetFriendsList(
@@ -1188,7 +1125,14 @@ function GetFriendsList(playFabId, externalPlatformFriends, profileConstraints, 
         XboxToken: xboxToken
     });
     return(GetFriendsList);
-}//playFabId, externalPlatformFriends, profileConstraints, xboxToken
+}
+/**
+ * Removes the specified friend from the the user's friend list
+ * @param {string} friendPlayFabId
+ * *REQUIRED* PlayFab identifier of the friend account which is to be removed.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function RemoveFriend(friendPlayFabId, playFabId)
 {
     var RemoveFriend = server.RemoveFriend(
@@ -1197,7 +1141,16 @@ function RemoveFriend(friendPlayFabId, playFabId)
         PlayFabId: playFabId
     });
     return(RemoveFriend);
-}//friendPlayFabId, playFabId
+}
+/**
+ * Updates the tag list for a specified user in the friend list of another user
+ * @param {string} friendPlayFabId
+ * *REQUIRED* PlayFab identifier of the friend account to which the tag(s) should be applied.
+ * @param {string} playFabId
+ * *REQUIRED* PlayFab identifier of the player whose friend is to be updated.
+ * @param {string[]} tags
+ * *REQUIRED* Array of tags to set on the friend account.
+ */
 function SetFriendTags(friendPlayFabId, playFabId, tags)
 {
     var SetFriendTags = server.SetFriendTags(
@@ -1207,10 +1160,15 @@ function SetFriendTags(friendPlayFabId, playFabId, tags)
         Tags: tags
     });
     return(SetFriendTags);
-}//friendPlayFabId, playFabId, tags
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Matchmaking
 //-------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Inform the matchmaker that a Game Server Instance is removed.
+ * @param {string} lobbyId
+ * *REQUIRED* Unique identifier for the Game Server Instance that is being deregistered.
+ */
 function DeregisterGame(lobbyId)
 {
     var DeregisterGame = server.DeregisterGame(
@@ -1218,7 +1176,14 @@ function DeregisterGame(lobbyId)
         LobbyId: lobbyId
     });
     return(DeregisterGame);
-}//lobbyId
+}
+/**
+ * Informs the PlayFab match-making service that the user specified has left the Game Server Instance
+ * @param {string} lobbyId
+ * *REQUIRED* Unique identifier of the Game Instance the user is leaving.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function NotifyMatchmakerPlayerLeft(lobbyId, playFabId)
 {
     var NotifyMatchmakerPlayerLeft = server.NotifyMatchmakerPlayerLeft(
@@ -1227,7 +1192,14 @@ function NotifyMatchmakerPlayerLeft(lobbyId, playFabId)
         PlayFabId: playFabId
     });
     return(NotifyMatchmakerPlayerLeft);
-}//lobbyId, playFabId
+}
+/**
+ * Validates a Game Server session ticket and returns details about the user
+ * @param {string} lobbyId
+ * *REQUIRED* Unique identifier of the Game Server Instance that is asking for validation of the authorization ticket.
+ * @param {string} ticket
+ * *REQUIRED* Server authorization ticket passed back from a call to Matchmake or StartGame.
+ */
 function RedeemMatchmakerTicket(lobbyId, ticket)
 {
     var RedeemMatchmakerTicket = server.RedeemMatchmakerTicket(
@@ -1236,7 +1208,12 @@ function RedeemMatchmakerTicket(lobbyId, ticket)
         Ticket: ticket
     });
     return(RedeemMatchmakerTicket);
-}//lobbyId, ticket
+}
+/**
+ * Set the state of the indicated Game Server Instance. Also update the heartbeat for the instance.
+ * @param {string} lobbyId
+ * *REQUIRED* Unique identifier of the Game Server Instance for which the heartbeat is updated.
+ */
 function RefreshGameServerInstanceHeartbeat(lobbyId)
 {
     var RefreshGameServerInstanceHeartbeat = server.RefreshGameServerInstanceHeartbeat(
@@ -1244,72 +1221,28 @@ function RefreshGameServerInstanceHeartbeat(lobbyId)
         LobbyId: lobbyId
     });
     return(RefreshGameServerInstanceHeartbeat);
-}//lobbyId
-function RegisterGame(build, gameMode, region, serverPort)
-{
-    var RegisterGame = server.RegisterGame(
-    {
-        Build: build,
-        GameMode: gameMode,
-        Region: region,
-        ServerPort: serverPort
-    });
-    return(RegisterGame);
-}//build, gameMode, region, serverPort
-function RegisterGame(build, gameMode, region, serverPort, lobbyId)
-{
-    var RegisterGame = server.RegisterGame(
-    {
-        Build: build,
-        GameMode: gameMode,
-        Region: region,
-        ServerPort: serverPort,
-        LobbyId: lobbyId
-    });
-    return(RegisterGame);
-}//build, gameMode, region, serverPort, lobbyId
-function RegisterGame(build, gameMode, region, serverPort, lobbyId, serverIPV4Address)
-{
-    var RegisterGame = server.RegisterGame(
-    {
-        Build: build,
-        GameMode: gameMode,
-        Region: region,
-        ServerPort: serverPort,
-        LobbyId: lobbyId,
-        ServerIPV4Address: serverIPV4Address
-    });
-    return(RegisterGame);
-}//build, gameMode, region, serverPort, lobbyId, serverIPV4Address
-function RegisterGame(build, gameMode, region, serverPort, lobbyId, serverIPV4Address, serverIPV6Address)
-{
-    var RegisterGame = server.RegisterGame(
-    {
-        Build: build,
-        GameMode: gameMode,
-        Region: region,
-        ServerPort: serverPort,
-        LobbyId: lobbyId,
-        ServerIPV4Address: serverIPV4Address,
-        ServerIPV6Address: serverIPV6Address
-    });
-    return(RegisterGame);
-}//build, gameMode, region, serverPort, lobbyId, serverIPV4Address, serverIPV6Address
-function RegisterGame(build, gameMode, region, serverPort, lobbyId, serverIPV4Address, serverIPV6Address, serverPublicDNSName)
-{
-    var RegisterGame = server.RegisterGame(
-    {
-        Build: build,
-        GameMode: gameMode,
-        Region: region,
-        ServerPort: serverPort,
-        LobbyId: lobbyId,
-        ServerIPV4Address: serverIPV4Address,
-        ServerIPV6Address: serverIPV6Address,
-        ServerPublicDNSName: serverPublicDNSName
-    });
-    return(RegisterGame);
-}//build, gameMode, region, serverPort, lobbyId, serverIPV4Address, serverIPV6Address, serverPublicDNSName
+}
+/**
+ * Inform the matchmaker that a new Game Server Instance is added.
+ * @param {string} build
+ * *REQUIRED* Unique identifier of the build running on the Game Server Instance.
+ * @param {string} gameMode
+ * *REQUIRED* Game Mode the Game Server instance is running. Note that this must be defined in the Game Modes tab in the PlayFab Game Manager, along with the Build ID (the same Game Mode can be defined for multiple Build IDs).
+ * @param {Region} region
+ * *REQUIRED* Region in which the Game Server Instance is running. For matchmaking using non-AWS region names, set this to any AWS region and use Tags (below) to specify your custom region.
+ * @param {string} serverPort
+ * *REQUIRED* Port number for communication with the Game Server Instance.
+ * @param {string} lobbyId
+ * Previous lobby id if re-registering an existing game.
+ * @param {string} serverIPV4Address
+ * IPV4 address of the game server instance.
+ * @param {string} serverIPV6Address
+ * IPV6 address (if any) of the game server instance.
+ * @param {string} serverPublicDNSName
+ * Public DNS name (if any) of the server
+ * @param {object} tags
+ * Tags for the Game Server Instance
+ */
 function RegisterGame(build, gameMode, region, serverPort, lobbyId, serverIPV4Address, serverIPV6Address, serverPublicDNSName, tags)
 {
     var RegisterGame = server.RegisterGame(
@@ -1325,7 +1258,14 @@ function RegisterGame(build, gameMode, region, serverPort, lobbyId, serverIPV4Ad
         Tags: tags
     });
     return(RegisterGame);
-}//build, gameMode, region, serverPort, lobbyId, serverIPV4Address, serverIPV6Address, serverPublicDNSName, tags
+}
+/**
+ * Sets the custom data of the indicated Game Server Instance
+ * @param {string} gameServerData
+ * *REQUIRED* Custom data to set for the specified game server instance.
+ * @param {string} lobbyId
+ * *REQUIRED* Unique identifier of the Game Instance to be updated, in decimal format.
+ */
 function SetGameServerInstanceData(gameServerData, lobbyId)
 {
     var SetGameServerInstanceData = server.SetGameServerInstanceData(
@@ -1334,7 +1274,14 @@ function SetGameServerInstanceData(gameServerData, lobbyId)
         LobbyId: lobbyId
     });
     return(SetGameServerInstanceData);
-}//gameServerData, lobbyId
+}
+/**
+ * Set the state of the indicated Game Server Instance.
+ * @param {string} lobbyId
+ * *REQUIRED* Unique identifier of the Game Instance to be updated, in decimal format.
+ * @param {GameInstanceState} state
+ * *REQUIRED* State to set for the specified game server instance.
+ */
 function SetGameServerInstanceState(lobbyId, state)
 {
     var SetGameServerInstanceState = server.SetGameServerInstanceState(
@@ -1343,7 +1290,14 @@ function SetGameServerInstanceState(lobbyId, state)
         State: state
     });
     return(SetGameServerInstanceState);
-}//lobbyId, state
+}
+/**
+ * Set custom tags for the specified Game Server Instance
+ * @param {string} lobbyId
+ * *REQUIRED* Unique identifier of the Game Server Instance to be updated.
+ * @param {object} tags
+ * *REQUIRED* Tags to set for the specified Game Server Instance. Note that this is the complete list of tags to be associated with the Game Server Instance.
+ */
 function SetGameServerInstanceTags(lobbyId, tags)
 {
     var SetGameServerInstanceTags = server.SetGameServerInstanceTags(
@@ -1352,10 +1306,15 @@ function SetGameServerInstanceTags(lobbyId, tags)
         Tags: tags
     });
     return(SetGameServerInstanceTags);
-}//lobbyId, tags
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Platform Specific Methods
 //-------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Awards the specified users the specified Steam achievements
+ * @param {AwardSteamAchievementItem[]} achievements
+ * *REQUIRED* Array of achievements to grant and the users to whom they are to be granted.
+ */
 function AwardSteamAchievement(achievements)
 {
     var AwardSteamAchievement = server.AwardSteamAchievement(
@@ -1363,10 +1322,17 @@ function AwardSteamAchievement(achievements)
         Achievements: achievements
     });
     return(AwardSteamAchievement);
-}//achievements
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Play Stream
 //-------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Adds a given tag to a player profile. The tag's namespace is automatically generated based on the source of the tag.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} tagName
+ * *REQUIRED* Unique tag for player profile.
+ */
 function AddPlayerTag(playFabId, tagName)
 {
     var AddPlayerTag = server.AddPlayerTag(
@@ -1375,12 +1341,20 @@ function AddPlayerTag(playFabId, tagName)
         TagName: tagName
     });
     return(AddPlayerTag);
-}//playFabId, tagName
+}
+/**
+ * Retrieves an array of player segment definitions. Results from this can be used in subsequent API calls such as GetPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not change.
+ */
 function GetAllSegments()
 {
     var GetAllSegments = server.GetAllSegments({});
     return(GetAllSegments);
-}//
+}
+/**
+ * List all segments that a player currently belongs to at this moment in time.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ */
 function GetPlayerSegments(playFabId)
 {
     var GetPlayerSegments = server.GetPlayerSegments(
@@ -1388,15 +1362,14 @@ function GetPlayerSegments(playFabId)
         PlayFabId: playFabId
     });
     return(GetPlayerSegments);
-}//playFabId
-function GetPlayerTags(playFabId)
-{
-    var GetPlayerTags = server.GetPlayerTags(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetPlayerTags);
-}//playFabId
+}
+/**
+ * Get all tags with a given Namespace (optional) from a player profile.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} namespace
+ * Optional namespace to filter results by
+ */
 function GetPlayerTags(playFabId, namespace)
 {
     var GetPlayerTags = server.GetPlayerTags(
@@ -1405,45 +1378,20 @@ function GetPlayerTags(playFabId, namespace)
         Namespace: namespace
     });
     return(GetPlayerTags);
-}//playFabId, namespace
-function GetPlayersInSegment(segmentId)
-{
-    var GetPlayersInSegment = server.GetPlayersInSegment(
-    {
-        SegmentId: segmentId
-    });
-    return(GetPlayersInSegment);
-}//segmentId
-function GetPlayersInSegment(segmentId, continuationToken)
-{
-    var GetPlayersInSegment = server.GetPlayersInSegment(
-    {
-        SegmentId: segmentId,
-        ContinuationToken: continuationToken
-    });
-    return(GetPlayersInSegment);
-}//segmentId, continuationToken
-function GetPlayersInSegment(segmentId, continuationToken, getProfilesAsync)
-{
-    var GetPlayersInSegment = server.GetPlayersInSegment(
-    {
-        SegmentId: segmentId,
-        ContinuationToken: continuationToken,
-        GetProfilesAsync: getProfilesAsync
-    });
-    return(GetPlayersInSegment);
-}//segmentId, continuationToken, getProfilesAsync
-function GetPlayersInSegment(segmentId, continuationToken, getProfilesAsync, maxBatchSize)
-{
-    var GetPlayersInSegment = server.GetPlayersInSegment(
-    {
-        SegmentId: segmentId,
-        ContinuationToken: continuationToken,
-        GetProfilesAsync: getProfilesAsync,
-        MaxBatchSize: maxBatchSize
-    });
-    return(GetPlayersInSegment);
-}//segmentId, continuationToken, getProfilesAsync, maxBatchSize
+}
+/**
+ * Allows for paging through all players in a given segment. This API creates a snapshot of all player profiles that match the segment definition at the time of its creation and lives through the Total Seconds to Live, refreshing its life span on each subsequent use of the Continuation Token. Profiles that change during the course of paging will not be reflected in the results. AB Test segments are currently not supported by this operation. NOTE: This API is limited to being called 30 times in one minute. You will be returned an error if you exceed this threshold.
+ * @param {string} segmentId
+ * *REQUIRED* Unique identifier for this segment.
+ * @param {string} continuationToken
+ * Continuation token if retrieving subsequent pages of results.
+ * @param {boolean} getProfilesAsync
+ * If set to true, the profiles are loaded asynchronously and the response will include a continuation token and approximate profile count until the first batch of profiles is loaded. Use this parameter to help avoid network timeouts.
+ * @param {number} maxBatchSize
+ * Maximum is 10,000. The value 0 will prevent loading any profiles and return only the count of profiles matching this segment.
+ * @param {number} secondsToLive
+ * Number of seconds to keep the continuation token active. After token expiration it is not possible to continue paging results. Default is 300 (5 minutes). Maximum is 1,800 (30 minutes).
+ */
 function GetPlayersInSegment(segmentId, continuationToken, getProfilesAsync, maxBatchSize, secondsToLive)
 {
     var GetPlayersInSegment = server.GetPlayersInSegment(
@@ -1455,7 +1403,14 @@ function GetPlayersInSegment(segmentId, continuationToken, getProfilesAsync, max
         SecondsToLive: secondsToLive
     });
     return(GetPlayersInSegment);
-}//segmentId, continuationToken, getProfilesAsync, maxBatchSize, secondsToLive
+}
+/**
+ * Remove a given tag from a player profile. The tag's namespace is automatically generated based on the source of the tag.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} tagName
+ * *REQUIRED* Unique tag for player profile.
+ */
 function RemovePlayerTag(playFabId, tagName)
 {
     var RemovePlayerTag = server.RemovePlayerTag(
@@ -1464,47 +1419,32 @@ function RemovePlayerTag(playFabId, tagName)
         TagName: tagName
     });
     return(RemovePlayerTag);
-}//playFabId, tagName
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Player Data Management
 //-------------------------------------------------------------------------------------------------------------------------------
-function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName)
-{
-    var GetFriendLeaderboard = server.GetFriendLeaderboard(
-    {
-        MaxResultsCount: maxResultsCount,
-        PlayFabId: playFabId,
-        StartPosition: startPosition,
-        StatisticName: statisticName
-    });
-    return(GetFriendLeaderboard);
-}//maxResultsCount, playFabId, startPosition, statisticName
-function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends)
-{
-    var GetFriendLeaderboard = server.GetFriendLeaderboard(
-    {
-        MaxResultsCount: maxResultsCount,
-        PlayFabId: playFabId,
-        StartPosition: startPosition,
-        StatisticName: statisticName,
-        ExternalPlatformFriends: externalPlatformFriends
-    });
-    return(GetFriendLeaderboard);
-}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends
-function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints)
-{
-    var GetFriendLeaderboard = server.GetFriendLeaderboard(
-    {
-        MaxResultsCount: maxResultsCount,
-        PlayFabId: playFabId,
-        StartPosition: startPosition,
-        StatisticName: statisticName,
-        ExternalPlatformFriends: externalPlatformFriends,
-        ProfileConstraints: profileConstraints
-    });
-    return(GetFriendLeaderboard);
-}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints
-function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version)
+/**
+ * Retrieves a list of ranked friends of the given player for the given statistic, starting from the indicated point in the leaderboard
+ * @param {number} maxResultsCount
+ * *REQUIRED* Maximum number of entries to retrieve.
+ * @param {string} playFabId
+ * *REQUIRED* The player whose friend leaderboard to get
+ * @param {number} startPosition
+ * *REQUIRED* Position in the leaderboard to start this listing (defaults to the first entry).
+ * @param {string} statisticName
+ * *REQUIRED* Statistic used to rank friends for this leaderboard.
+ * @param {ExternalFriendSources} externalPlatformFriends
+ * Indicates which other platforms' friends should be included in the response. In HTTP, it is represented as a comma-separated list of platforms.
+ * @param {PlayerProfileViewConstraints} profileConstraints
+ * If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
+ * @param {boolean} useSpecificVersion
+ * If set to false, Version is considered null. If true, uses the specified Version
+ * @param {number} version
+ * The version of the leaderboard to get.
+ * @param {string} xboxToken
+ * Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
+ */
+function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, useSpecificVersion, version, xboxToken)
 {
     var GetFriendLeaderboard = server.GetFriendLeaderboard(
     {
@@ -1514,49 +1454,28 @@ function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statist
         StatisticName: statisticName,
         ExternalPlatformFriends: externalPlatformFriends,
         ProfileConstraints: profileConstraints,
-        UseSpecificVersion: true,
-        Version: version
-    });
-    return(GetFriendLeaderboard);
-}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version
-function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version, xboxToken)
-{
-    var GetFriendLeaderboard = server.GetFriendLeaderboard(
-    {
-        MaxResultsCount: maxResultsCount,
-        PlayFabId: playFabId,
-        StartPosition: startPosition,
-        StatisticName: statisticName,
-        ExternalPlatformFriends: externalPlatformFriends,
-        ProfileConstraints: profileConstraints,
-        UseSpecificVersion: true,
+        UseSpecificVersion: useSpecificVersion,
         Version: version,
         XboxToken: xboxToken
     });
     return(GetFriendLeaderboard);
-}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version, xboxToken
-function GetLeaderboard(maxResultsCount, startPosition, statisticName)
-{
-    var GetLeaderboard = server.GetLeaderboard(
-    {
-        MaxResultsCount: maxResultsCount,
-        StartPosition: startPosition,
-        StatisticName: statisticName
-    });
-    return(GetLeaderboard);
-}//maxResultsCount, startPosition, statisticName
-function GetLeaderboard(maxResultsCount, startPosition, statisticName, profileConstraints)
-{
-    var GetLeaderboard = server.GetLeaderboard(
-    {
-        MaxResultsCount: maxResultsCount,
-        StartPosition: startPosition,
-        StatisticName: statisticName,
-        ProfileConstraints: profileConstraints
-    });
-    return(GetLeaderboard);
-}//maxResultsCount, startPosition, statisticName, profileConstraints
-function GetLeaderboard(maxResultsCount, startPosition, statisticName, profileConstraints, version)
+}
+/**
+ * Retrieves a list of ranked users for the given statistic, starting from the indicated point in the leaderboard
+ * @param {number} maxResultsCount
+ * *REQUIRED* Maximum number of entries to retrieve.
+ * @param {number} startPosition
+ * *REQUIRED* First entry in the leaderboard to be retrieved.
+ * @param {string} statisticName
+ * *REQUIRED* Unique identifier for the title-specific statistic for the leaderboard.
+ * @param {PlayerProfileViewConstraints} profileConstraints
+ * If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
+ * @param {boolean} useSpecificVersion
+ * If set to false, Version is considered null. If true, uses the specified Version
+ * @param {number} version
+ * The version of the leaderboard to get.
+ */
+function GetLeaderboard(maxResultsCount, startPosition, statisticName, profileConstraints, useSpecificVersion, version)
 {
     var GetLeaderboard = server.GetLeaderboard(
     {
@@ -1564,33 +1483,27 @@ function GetLeaderboard(maxResultsCount, startPosition, statisticName, profileCo
         StartPosition: startPosition,
         StatisticName: statisticName,
         ProfileConstraints: profileConstraints,
-        UseSpecificVersion: true,
+        UseSpecificVersion: useSpecificVersion,
         Version: version
     });
     return(GetLeaderboard);
-}//maxResultsCount, startPosition, statisticName, profileConstraints, version
-function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName)
-{
-    var GetLeaderboardAroundUser = server.GetLeaderboardAroundUser(
-    {
-        MaxResultsCount: maxResultsCount,
-        PlayFabId: playFabId,
-        StatisticName: statisticName
-    });
-    return(GetLeaderboardAroundUser);
-}//maxResultsCount, playFabId, statisticName
-function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName, profileConstraints)
-{
-    var GetLeaderboardAroundUser = server.GetLeaderboardAroundUser(
-    {
-        MaxResultsCount: maxResultsCount,
-        PlayFabId: playFabId,
-        StatisticName: statisticName,
-        ProfileConstraints: profileConstraints
-    });
-    return(GetLeaderboardAroundUser);
-}//maxResultsCount, playFabId, statisticName, profileConstraints
-function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName, profileConstraints, version)
+}
+/**
+ * Retrieves a list of ranked users for the given statistic, centered on the currently signed-in user
+ * @param {number} maxResultsCount
+ * *REQUIRED* Maximum number of entries to retrieve.
+ * @param {string} playFabId
+ * *REQUIRED* Unique PlayFab assigned ID of the user on whom the operation will be performed.
+ * @param {string} statisticName
+ * *REQUIRED* Unique identifier for the title-specific statistic for the leaderboard.
+ * @param {PlayerProfileViewConstraints} profileConstraints
+ * If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
+ * @param {boolean} useSpecificVersion
+ * If set to false, Version is considered null. If true, uses the specified Version
+ * @param {number} version
+ * The version of the leaderboard to get.
+ */
+function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName, profileConstraints, useSpecificVersion, version)
 {
     var GetLeaderboardAroundUser = server.GetLeaderboardAroundUser(
     {
@@ -1598,11 +1511,18 @@ function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName, pro
         PlayFabId: playFabId,
         StatisticName: statisticName,
         ProfileConstraints: profileConstraints,
-        UseSpecificVersion: true,
+        UseSpecificVersion: useSpecificVersion,
         Version: version
     });
     return(GetLeaderboardAroundUser);
-}//maxResultsCount, playFabId, statisticName, profileConstraints, version
+}
+/**
+ * Returns whatever info is requested in the response for the user. Note that PII (like email address, facebook id) may be returned. All parameters default to false.
+ * @param {GetPlayerCombinedInfoRequestParams} infoRequestParameters
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ */
 function GetPlayerCombinedInfo(infoRequestParameters, playFabId)
 {
     var GetPlayerCombinedInfo = server.GetPlayerCombinedInfo(
@@ -1611,7 +1531,12 @@ function GetPlayerCombinedInfo(infoRequestParameters, playFabId)
         PlayFabId: playFabId
     });
     return(GetPlayerCombinedInfo);
-}//infoRequestParameters, playFabId
+}
+/**
+ * Retrieves the information on the available versions of the specified statistic.
+ * @param {string} statisticName
+ * unique name of the statistic
+ */
 function GetPlayerStatisticVersions(statisticName)
 {
     var GetPlayerStatisticVersions = server.GetPlayerStatisticVersions(
@@ -1619,24 +1544,16 @@ function GetPlayerStatisticVersions(statisticName)
         StatisticName: statisticName
     });
     return(GetPlayerStatisticVersions);
-}//statisticName
-function GetPlayerStatistics(playFabId)
-{
-    var GetPlayerStatistics = server.GetPlayerStatistics(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetPlayerStatistics);
-}//playFabId
-function GetPlayerStatistics(playFabId, statisticNameVersions)
-{
-    var GetPlayerStatistics = server.GetPlayerStatistics(
-    {
-        PlayFabId: playFabId,
-        StatisticNameVersions: statisticNameVersions
-    });
-    return(GetPlayerStatistics);
-}//playFabId, statisticNameVersions
+}
+/**
+ * Retrieves the current version and values for the indicated statistics, for the local player.
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {StatisticNameVersion[]} statisticNameVersions
+ * 
+ * @param {string[]} statisticNames
+ * 
+ */
 function GetPlayerStatistics(playFabId, statisticNameVersions, statisticNames)
 {
     var GetPlayerStatistics = server.GetPlayerStatistics(
@@ -1646,24 +1563,16 @@ function GetPlayerStatistics(playFabId, statisticNameVersions, statisticNames)
         StatisticNames: statisticNames
     });
     return(GetPlayerStatistics);
-}//playFabId, statisticNameVersions, statisticNames
-function GetUserData(playFabId)
-{
-    var GetUserData = server.GetUserData(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetUserData);
-}//playFabId
-function GetUserData(playFabId, ifChangedFromDataVersion)
-{
-    var GetUserData = server.GetUserData(
-    {
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetUserData);
-}//playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the title-specific custom data for the user which is readable and writable by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {number} ifChangedFromDataVersion
+ * 
+ * @param {string[]} keys
+ * 
+ */
 function GetUserData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserData = server.GetUserData(
@@ -1673,24 +1582,16 @@ function GetUserData(playFabId, ifChangedFromDataVersion, keys)
         Keys: keys
     });
     return(GetUserData);
-}//playFabId, ifChangedFromDataVersion, keys
-function GetUserInternalData(playFabId)
-{
-    var GetUserInternalData = server.GetUserInternalData(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetUserInternalData);
-}//playFabId
-function GetUserInternalData(playFabId, ifChangedFromDataVersion)
-{
-    var GetUserInternalData = server.GetUserInternalData(
-    {
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetUserInternalData);
-}//playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the title-specific custom data for the user which cannot be accessed by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {number} ifChangedFromDataVersion
+ * 
+ * @param {string[]} keys
+ * 
+ */
 function GetUserInternalData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserInternalData = server.GetUserInternalData(
@@ -1700,24 +1601,16 @@ function GetUserInternalData(playFabId, ifChangedFromDataVersion, keys)
         Keys: keys
     });
     return(GetUserInternalData);
-}//playFabId, ifChangedFromDataVersion, keys
-function GetUserPublisherData(playFabId)
-{
-    var GetUserPublisherData = server.GetUserPublisherData(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetUserPublisherData);
-}//playFabId
-function GetUserPublisherData(playFabId, ifChangedFromDataVersion)
-{
-    var GetUserPublisherData = server.GetUserPublisherData(
-    {
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetUserPublisherData);
-}//playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the publisher-specific custom data for the user which is readable and writable by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {number} ifChangedFromDataVersion
+ * 
+ * @param {string[]} keys
+ * 
+ */
 function GetUserPublisherData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserPublisherData = server.GetUserPublisherData(
@@ -1727,24 +1620,16 @@ function GetUserPublisherData(playFabId, ifChangedFromDataVersion, keys)
         Keys: keys
     });
     return(GetUserPublisherData);
-}//playFabId, ifChangedFromDataVersion, keys
-function GetUserPublisherInternalData(playFabId)
-{
-    var GetUserPublisherInternalData = server.GetUserPublisherInternalData(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetUserPublisherInternalData);
-}//playFabId
-function GetUserPublisherInternalData(playFabId, ifChangedFromDataVersion)
-{
-    var GetUserPublisherInternalData = server.GetUserPublisherInternalData(
-    {
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetUserPublisherInternalData);
-}//playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the publisher-specific custom data for the user which cannot be accessed by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {number} ifChangedFromDataVersion
+ * 
+ * @param {string[]} keys
+ * 
+ */
 function GetUserPublisherInternalData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserPublisherInternalData = server.GetUserPublisherInternalData(
@@ -1754,24 +1639,16 @@ function GetUserPublisherInternalData(playFabId, ifChangedFromDataVersion, keys)
         Keys: keys
     });
     return(GetUserPublisherInternalData);
-}//playFabId, ifChangedFromDataVersion, keys
-function GetUserPublisherReadOnlyData(playFabId)
-{
-    var GetUserPublisherReadOnlyData = server.GetUserPublisherReadOnlyData(
-    {
-        PlayFabId: currentPlayerId
-    });
-    return(GetUserPublisherReadOnlyData);
-}//playFabId
-function GetUserPublisherReadOnlyData(playFabId, ifChangedFromDataVersion)
-{
-    var GetUserPublisherReadOnlyData = server.GetUserPublisherReadOnlyData(
-    {
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetUserPublisherReadOnlyData);
-}//playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the publisher-specific custom data for the user which can only be read by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {number} ifChangedFromDataVersion
+ * 
+ * @param {string[]} keys
+ * 
+ */
 function GetUserPublisherReadOnlyData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserPublisherReadOnlyData = server.GetUserPublisherReadOnlyData(
@@ -1781,24 +1658,16 @@ function GetUserPublisherReadOnlyData(playFabId, ifChangedFromDataVersion, keys)
         Keys: keys
     });
     return(GetUserPublisherReadOnlyData);
-}//playFabId, ifChangedFromDataVersion, keys
-function GetUserReadOnlyData(playFabId)
-{
-    var GetUserReadOnlyData = server.GetUserReadOnlyData(
-    {
-        PlayFabId: playFabId
-    });
-    return(GetUserReadOnlyData);
-}//playFabId
-function GetUserReadOnlyData(playFabId, ifChangedFromDataVersion)
-{
-    var GetUserReadOnlyData = server.GetUserReadOnlyData(
-    {
-        PlayFabId: playFabId,
-        IfChangedFromDataVersion: ifChangedFromDataVersion
-    });
-    return(GetUserReadOnlyData);
-}//playFabId, ifChangedFromDataVersion
+}
+/**
+ * Retrieves the title-specific custom data for the user which can only be read by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {number} ifChangedFromDataVersion
+ * 
+ * @param {string[]} keys
+ * 
+ */
 function GetUserReadOnlyData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserReadOnlyData = server.GetUserReadOnlyData(
@@ -1808,16 +1677,16 @@ function GetUserReadOnlyData(playFabId, ifChangedFromDataVersion, keys)
         Keys: keys
     });
     return(GetUserReadOnlyData);
-}//playFabId, ifChangedFromDataVersion, keys
-function UpdatePlayerStatistics(playFabId, statistics)
-{
-    var UpdatePlayerStatistics = server.UpdatePlayerStatistics(
-    {
-        PlayFabId: playFabId,
-        Statistics: statistics
-    });
-    return(UpdatePlayerStatistics);
-}//playFabId, statistics
+}
+/**
+ * Updates the values of the specified title-specific statistics for the user
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {StatisticUpdate[]} statistics
+ * *REQUIRED* 
+ * @param {boolean} forceUpdate
+ * 
+ */
 function UpdatePlayerStatistics(playFabId, statistics, forceUpdate)
 {
     var UpdatePlayerStatistics = server.UpdatePlayerStatistics(
@@ -1827,26 +1696,18 @@ function UpdatePlayerStatistics(playFabId, statistics, forceUpdate)
         ForceUpdate: forceUpdate
     });
     return(UpdatePlayerStatistics);
-}//playFabId, statistics, forceUpdate
-function UpdateUserData(playFabId, data)
-{
-    var UpdateUserData = server.UpdateUserData(
-    {
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateUserData);
-}//playFabId, data
-function UpdateUserData(playFabId, data, keysToRemove)
-{
-    var UpdateUserData = server.UpdateUserData(
-    {
-        PlayFabId: playFabId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateUserData);
-}//playFabId, data, keysToRemove
+}
+/**
+ * Updates the title-specific custom data for the user which is readable and writable by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {object} data
+ * 
+ * @param {string[]} keysToRemove
+ * 
+ * @param {UserDataPermission} permission
+ * 
+ */
 function UpdateUserData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserData = server.UpdateUserData(
@@ -1857,16 +1718,16 @@ function UpdateUserData(playFabId, data, keysToRemove, permission)
         Permission: permission
     });
     return(UpdateUserData);
-}//playFabId, data, keysToRemove, permission
-function UpdateUserInternalData(playFabId, data)
-{
-    var UpdateUserInternalData = server.UpdateUserInternalData(
-    {
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateUserInternalData);
-}//playFabId, data
+}
+/**
+ * Updates the title-specific custom data for the user which cannot be accessed by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {object} data
+ * 
+ * @param {string[]} keysToRemove
+ * 
+ */
 function UpdateUserInternalData(playFabId, data, keysToRemove)
 {
     var UpdateUserInternalData = server.UpdateUserInternalData(
@@ -1876,26 +1737,18 @@ function UpdateUserInternalData(playFabId, data, keysToRemove)
         KeysToRemove: keysToRemove
     });
     return(UpdateUserInternalData);
-}//playFabId, data, keysToRemove
-function UpdateUserPublisherData(playFabId, data)
-{
-    var UpdateUserPublisherData = server.UpdateUserPublisherData(
-    {
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateUserPublisherData);
-}//playFabId, data
-function UpdateUserPublisherData(playFabId, data, keysToRemove)
-{
-    var UpdateUserPublisherData = server.UpdateUserPublisherData(
-    {
-        PlayFabId: playFabId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateUserPublisherData);
-}//playFabId, data, keysToRemove
+}
+/**
+ * Updates the publisher-specific custom data for the user which is readable and writable by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {object} data
+ * 
+ * @param {string[]} keysToRemove
+ * 
+ * @param {UserDataPermission} permission
+ * 
+ */
 function UpdateUserPublisherData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserPublisherData = server.UpdateUserPublisherData(
@@ -1906,16 +1759,16 @@ function UpdateUserPublisherData(playFabId, data, keysToRemove, permission)
         Permission: permission
     });
     return(UpdateUserPublisherData);
-}//playFabId, data, keysToRemove, permission
-function UpdateUserPublisherInternalData(playFabId, data)
-{
-    var UpdateUserPublisherInternalData = server.UpdateUserPublisherInternalData(
-    {
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateUserPublisherInternalData);
-}//playFabId, data
+}
+/**
+ * Updates the publisher-specific custom data for the user which cannot be accessed by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {object} data
+ * 
+ * @param {string[]} keysToRemove
+ * 
+ */
 function UpdateUserPublisherInternalData(playFabId, data, keysToRemove)
 {
     var UpdateUserPublisherInternalData = server.UpdateUserPublisherInternalData(
@@ -1925,26 +1778,18 @@ function UpdateUserPublisherInternalData(playFabId, data, keysToRemove)
         KeysToRemove: keysToRemove
     });
     return(UpdateUserPublisherInternalData);
-}//playFabId, data, keysToRemove
-function UpdateUserPublisherReadOnlyData(playFabId, data)
-{
-    var UpdateUserPublisherReadOnlyData = server.UpdateUserPublisherReadOnlyData(
-    {
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateUserPublisherReadOnlyData);
-}//playFabId, data
-function UpdateUserPublisherReadOnlyData(playFabId, data, keysToRemove)
-{
-    var UpdateUserPublisherReadOnlyData = server.UpdateUserPublisherReadOnlyData(
-    {
-        PlayFabId: playFabId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateUserPublisherReadOnlyData);
-}//playFabId, data, keysToRemove
+}
+/**
+ * Updates the publisher-specific custom data for the user which can only be read by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {object} data
+ * 
+ * @param {string[]} keysToRemove
+ * 
+ * @param {UserDataPermission} permission
+ * 
+ */
 function UpdateUserPublisherReadOnlyData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserPublisherReadOnlyData = server.UpdateUserPublisherReadOnlyData(
@@ -1955,26 +1800,18 @@ function UpdateUserPublisherReadOnlyData(playFabId, data, keysToRemove, permissi
         Permission: permission
     });
     return(UpdateUserPublisherReadOnlyData);
-}//playFabId, data, keysToRemove, permission
-function UpdateUserReadOnlyData(playFabId, data)
-{
-    var UpdateUserReadOnlyData = server.UpdateUserReadOnlyData(
-    {
-        PlayFabId: playFabId,
-        Data: data
-    });
-    return(UpdateUserReadOnlyData);
-}//playFabId, data
-function UpdateUserReadOnlyData(playFabId, data, keysToRemove)
-{
-    var UpdateUserReadOnlyData = server.UpdateUserReadOnlyData(
-    {
-        PlayFabId: playFabId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateUserReadOnlyData);
-}//playFabId, data, keysToRemove
+}
+/**
+ * Updates the title-specific custom data for the user which can only be read by the client
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {object} data
+ * 
+ * @param {string[]} keysToRemove
+ * 
+ * @param {UserDataPermission} permission
+ * 
+ */
 function UpdateUserReadOnlyData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserReadOnlyData = server.UpdateUserReadOnlyData(
@@ -1985,10 +1822,21 @@ function UpdateUserReadOnlyData(playFabId, data, keysToRemove, permission)
         Permission: permission
     });
     return(UpdateUserReadOnlyData);
-}//playFabId, data, keysToRemove, permission
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Player Item Management
 //-------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Increments the character's balance of the specified virtual currency by the stated amount
+ * @param {number} amount
+ * *REQUIRED* 
+ * @param {string} characterId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} virtualCurrency
+ * *REQUIRED* 
+ */
 function AddCharacterVirtualCurrency(amount, characterId, playFabId, virtualCurrency)
 {
     var AddCharacterVirtualCurrency = server.AddCharacterVirtualCurrency(
@@ -1999,7 +1847,16 @@ function AddCharacterVirtualCurrency(amount, characterId, playFabId, virtualCurr
         VirtualCurrency: virtualCurrency
     });
     return(AddCharacterVirtualCurrency);
-}//amount, characterId, playFabId, virtualCurrency
+}
+/**
+ * Increments the user's balance of the specified virtual currency by the stated amount
+ * @param {number} amount
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} virtualCurrency
+ * *REQUIRED* 
+ */
 function AddUserVirtualCurrency(amount, playFabId, virtualCurrency)
 {
     var AddUserVirtualCurrency = server.AddUserVirtualCurrency(
@@ -2009,17 +1866,18 @@ function AddUserVirtualCurrency(amount, playFabId, virtualCurrency)
         VirtualCurrency: virtualCurrency
     });
     return(AddUserVirtualCurrency);
-}//amount, playFabId, virtualCurrency
-function ConsumeItem(consumeCount, itemInstanceId, playFabId)
-{
-    var ConsumeItem = server.ConsumeItem(
-    {
-        ConsumeCount: consumeCount,
-        ItemInstanceId: itemInstanceId,
-        PlayFabId: playFabId
-    });
-    return(ConsumeItem);
-}//consumeCount, itemInstanceId, playFabId
+}
+/**
+ * Consume uses of a consumable item. When all uses are consumed, it will be removed from the player's inventory.
+ * @param {number} consumeCount
+ * *REQUIRED* 
+ * @param {string} itemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} characterId
+ * 
+ */
 function ConsumeItem(consumeCount, itemInstanceId, playFabId, characterId)
 {
     var ConsumeItem = server.ConsumeItem(
@@ -2030,15 +1888,14 @@ function ConsumeItem(consumeCount, itemInstanceId, playFabId, characterId)
         CharacterId: characterId
     });
     return(ConsumeItem);
-}//consumeCount, itemInstanceId, playFabId, characterId
-function EvaluateRandomResultTable(tableId)
-{
-    var EvaluateRandomResultTable = server.EvaluateRandomResultTable(
-    {
-        TableId: tableId
-    });
-    return(EvaluateRandomResultTable);
-}//tableId
+}
+/**
+ * Returns the result of an evaluation of a Random Result Table - the ItemId from the game Catalog which would have been added to the player inventory, if the Random Result Table were added via a Bundle or a call to UnlockContainer.
+ * @param {string} tableId
+ * *REQUIRED* 
+ * @param {string} catalogVersion
+ * 
+ */
 function EvaluateRandomResultTable(tableId, catalogVersion)
 {
     var EvaluateRandomResultTable = server.EvaluateRandomResultTable(
@@ -2047,16 +1904,16 @@ function EvaluateRandomResultTable(tableId, catalogVersion)
         CatalogVersion: catalogVersion
     });
     return(EvaluateRandomResultTable);
-}//tableId, catalogVersion
-function GetCharacterInventory(characterId, playFabId)
-{
-    var GetCharacterInventory = server.GetCharacterInventory(
-    {
-        CharacterId: characterId,
-        PlayFabId: playFabId
-    });
-    return(GetCharacterInventory);
-}//characterId, playFabId
+}
+/**
+ * Retrieves the specified character's current inventory of virtual goods
+ * @param {string} characterId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} catalogVersion
+ * 
+ */
 function GetCharacterInventory(characterId, playFabId, catalogVersion)
 {
     var GetCharacterInventory = server.GetCharacterInventory(
@@ -2066,15 +1923,14 @@ function GetCharacterInventory(characterId, playFabId, catalogVersion)
         CatalogVersion: catalogVersion
     });
     return(GetCharacterInventory);
-}//characterId, playFabId, catalogVersion
-function GetRandomResultTables(tableIDs)
-{
-    var GetRandomResultTables = server.GetRandomResultTables(
-    {
-        TableIDs: tableIDs
-    });
-    return(GetRandomResultTables);
-}//tableIDs
+}
+/**
+ * Retrieves the configuration information for the specified random results tables for the title, including all ItemId values and weights
+ * @param {string[]} tableIDs
+ * *REQUIRED* 
+ * @param {string} catalogVersion
+ * 
+ */
 function GetRandomResultTables(tableIDs, catalogVersion)
 {
     var GetRandomResultTables = server.GetRandomResultTables(
@@ -2083,7 +1939,12 @@ function GetRandomResultTables(tableIDs, catalogVersion)
         CatalogVersion: catalogVersion
     });
     return(GetRandomResultTables);
-}//tableIDs, catalogVersion
+}
+/**
+ * Retrieves the specified user's current inventory of virtual goods
+ * @param {string} playFabId
+ * *REQUIRED* 
+ */
 function GetUserInventory(playFabId)
 {
 	var GetUserInventory = server.GetUserInventory(
@@ -2091,37 +1952,20 @@ function GetUserInventory(playFabId)
 		PlayFabId: playFabId
 	});
 	return(GetUserInventory);
-}//playFabId
-function GrantItemsToCharacter(characterId, playFabId)
-{
-	var GrantItemsToCharacter = server.GrantItemsToCharacter(
-	{
-		CharacterId: characterId,
-		PlayFabId: playFabId
-	});
-	return(GrantItemsToCharacter);
-}//characterId, playFabId
-function GrantItemsToCharacter(characterId, playFabId, annotation)
-{
-	var GrantItemsToCharacter = server.GrantItemsToCharacter(
-	{
-		CharacterId: characterId,
-		PlayFabId: playFabId,
-		Annotation: annotation
-	});
-	return(GrantItemsToCharacter);
-}//characterId, playFabId, annotation
-function GrantItemsToCharacter(characterId, playFabId, annotation, catalogVersion)
-{
-	var GrantItemsToCharacter = server.GrantItemsToCharacter(
-	{
-		CharacterId: characterId,
-		PlayFabId: playFabId,
-		Annotation: annotation,
-		CatalogVersion: catalogVersion
-	});
-	return(GrantItemsToCharacter);
-}//characterId, playFabId, annotation, catalogVersion
+}
+/**
+ * Adds the specified items to the specified character's inventory
+ * @param {string} characterId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} annotation
+ * 
+ * @param {string} catalogVersion
+ * 
+ * @param {string[]} itemIds
+ * 
+ */
 function GrantItemsToCharacter(characterId, playFabId, annotation, catalogVersion, itemIds)
 {
 	var GrantItemsToCharacter = server.GrantItemsToCharacter(
@@ -2133,26 +1977,18 @@ function GrantItemsToCharacter(characterId, playFabId, annotation, catalogVersio
 		ItemIds: itemIds
 	});
 	return(GrantItemsToCharacter);
-}//characterId, playFabId, annotation, catalogVersion, itemIds
-function GrantItemsToUser(itemIds, playFabId)
-{
-    var GrantItemsToUser = server.GrantItemsToUser(
-    {
-        ItemIds: itemIds,
-        PlayFabId: playFabId
-    });
-    return(GrantItemsToUser);
-}//itemIds, playFabId
-function GrantItemsToUser(itemIds, playFabId, annotation)
-{
-    var GrantItemsToUser = server.GrantItemsToUser(
-    {
-        ItemIds: itemIds,
-        PlayFabId: playFabId,
-        Annotation: annotation
-    });
-    return(GrantItemsToUser);
-}//itemIds, playFabId, annotation
+}
+/**
+ * Adds the specified items to the specified user's inventory
+ * @param {string[]} itemIds
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} annotation
+ * 
+ * @param {string} catalogVersion
+ * 
+ */
 function GrantItemsToUser(itemIds, playFabId, annotation, catalogVersion)
 {
     var GrantItemsToUser = server.GrantItemsToUser(
@@ -2163,15 +1999,14 @@ function GrantItemsToUser(itemIds, playFabId, annotation, catalogVersion)
         CatalogVersion: catalogVersion
     });
     return(GrantItemsToUser);
-}//itemIds, playFabId, annotation, catalogVersion
-function GrantItemsToUsers(itemGrants)
-{
-    var GrantItemsToUsers = server.GrantItemsToUsers(
-    {
-        ItemGrants: itemGrants
-    });
-    return(GrantItemsToUsers);
-}//itemGrants
+}
+/**
+ * Adds the specified items to the specified user inventories
+ * @param {ItemGrant[]} itemGrants
+ * *REQUIRED* 
+ * @param {string} catalogVersion
+ * 
+ */
 function GrantItemsToUsers(itemGrants, catalogVersion)
 {
     var GrantItemsToUsers = server.GrantItemsToUsers(
@@ -2180,7 +2015,16 @@ function GrantItemsToUsers(itemGrants, catalogVersion)
         CatalogVersion: catalogVersion
     });
     return(GrantItemsToUsers);
-}//itemGrants, catalogVersion
+}
+/**
+ * Modifies the number of remaining uses of a player's inventory item
+ * @param {string} itemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {number} usesToAdd
+ * *REQUIRED* 
+ */
 function ModifyItemUses(itemInstanceId, playFabId, usesToAdd)
 {
     var ModifyItemUses = server.ModifyItemUses(
@@ -2190,7 +2034,18 @@ function ModifyItemUses(itemInstanceId, playFabId, usesToAdd)
         UsesToAdd: usesToAdd
     });
     return(ModifyItemUses);
-}//itemInstanceId, playFabId, usesToAdd
+}
+/**
+ * Moves an item from a character's inventory into another of the users's character's inventory.
+ * @param {string} givingCharacterId
+ * *REQUIRED* 
+ * @param {string} itemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} receivingCharacterId
+ * *REQUIRED* 
+ */
 function MoveItemToCharacterFromCharacter(givingCharacterId, itemInstanceId, playFabId, receivingCharacterId)
 {
     var MoveItemToCharacterFromCharacter = server.MoveItemToCharacterFromCharacter(
@@ -2201,7 +2056,16 @@ function MoveItemToCharacterFromCharacter(givingCharacterId, itemInstanceId, pla
         ReceivingCharacterId: receivingCharacterId
     });
     return(MoveItemToCharacterFromCharacter);
-}//givingCharacterId, itemInstanceId, playFabId, receivingCharacterId
+}
+/**
+ * Moves an item from a user's inventory into their character's inventory.
+ * @param {string} characterId
+ * *REQUIRED* 
+ * @param {string} itemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ */
 function MoveItemToCharacterFromUser(characterId, itemInstanceId, playFabId)
 {
     var MoveItemToCharacterFromUser = server.MoveItemToCharacterFromUser(
@@ -2211,7 +2075,16 @@ function MoveItemToCharacterFromUser(characterId, itemInstanceId, playFabId)
         PlayFabId: playFabId
     });
     return(MoveItemToCharacterFromUser);
-}//characterId, itemInstanceId, playFabId
+}
+/**
+ * Moves an item from a character's inventory into the owning user's inventory.
+ * @param {string} characterId
+ * *REQUIRED* 
+ * @param {string} itemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ */
 function MoveItemToUserFromCharacter(characterId, itemInstanceId, playFabId)
 {
     var MoveItemToUserFromCharacter = server.MoveItemToUserFromCharacter(
@@ -2221,26 +2094,18 @@ function MoveItemToUserFromCharacter(characterId, itemInstanceId, playFabId)
         PlayFabId: playFabId
     });
     return(MoveItemToUserFromCharacter);
-}//characterId, itemInstanceId, playFabId
-function RedeemCoupon(couponCode, playFabId)
-{
-    var RedeemCoupon = server.RedeemCoupon(
-    {
-        CouponCode: couponCode,
-        PlayFabId: playFabId
-    });
-    return(RedeemCoupon);
-}//couponCode, playFabId
-function RedeemCoupon(couponCode, playFabId, catalogVersion)
-{
-    var RedeemCoupon = server.RedeemCoupon(
-    {
-        CouponCode: couponCode,
-        PlayFabId: playFabId,
-        CatalogVersion: catalogVersion
-    });
-    return(RedeemCoupon);
-}//couponCode, playFabId, catalogVersion
+}
+/**
+ * Adds the virtual goods associated with the coupon to the user's inventory. Coupons can be generated via the Economy->Catalogs tab in the PlayFab Game Manager.
+ * @param {string} couponCode
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} catalogVersion
+ * 
+ * @param {string} characterId
+ * 
+ */
 function RedeemCoupon(couponCode, playFabId, catalogVersion, characterId)
 {
     var RedeemCoupon = server.RedeemCoupon(
@@ -2251,16 +2116,16 @@ function RedeemCoupon(couponCode, playFabId, catalogVersion, characterId)
         CharacterId: characterId
     });
     return(RedeemCoupon);
-}//couponCode, playFabId, catalogVersion, characterId
-function ReportPlayer(reporteeId, reporterId)
-{
-    var ReportPlayer = server.ReportPlayer(
-    {
-        ReporteeId: reporteeId,
-        ReporterId: reporterId
-    });
-    return(ReportPlayer);
-}//reporteeId, reporterId
+}
+/**
+ * Submit a report about a player (due to bad bahavior, etc.) on behalf of another player, so that customer service representatives for the title can take action concerning potentially toxic players.
+ * @param {string} reporteeId
+ * *REQUIRED* 
+ * @param {string} reporterId
+ * *REQUIRED* 
+ * @param {string} comment
+ * 
+ */
 function ReportPlayer(reporteeId, reporterId, comment)
 {
     var ReportPlayer = server.ReportPlayer(
@@ -2270,16 +2135,16 @@ function ReportPlayer(reporteeId, reporterId, comment)
         Comment: comment
     });
     return(ReportPlayer);
-}//reporteeId, reporterId, comment
-function RevokeInventoryItem(itemInstanceId, playFabId)
-{
-    var RevokeInventoryItem = server.RevokeInventoryItem(
-    {
-        ItemInstanceId: itemInstanceId,
-        PlayFabId: playFabId
-    });
-    return(RevokeInventoryItem);
-}//itemInstanceId, playFabId
+}
+/**
+ * Revokes access to an item in a user's inventory
+ * @param {string} itemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} characterId
+ * 
+ */
 function RevokeInventoryItem(itemInstanceId, playFabId, characterId)
 {
     var RevokeInventoryItem = server.RevokeInventoryItem(
@@ -2289,7 +2154,12 @@ function RevokeInventoryItem(itemInstanceId, playFabId, characterId)
         CharacterId: characterId
     });
     return(RevokeInventoryItem);
-}//itemInstanceId, playFabId, characterId
+}
+/**
+ * Revokes access for up to 25 items across multiple users and characters.
+ * @param {RevokeInventoryItem[]} items
+ * *REQUIRED* 
+ */
 function RevokeInventoryItems(items)
 {
     var RevokeInventoryItems = server.RevokeInventoryItems(
@@ -2297,7 +2167,18 @@ function RevokeInventoryItems(items)
         Items: items
     });
     return(RevokeInventoryItems);
-}//items
+}
+/**
+ * Decrements the character's balance of the specified virtual currency by the stated amount. It is possible to make a VC balance negative with this API.
+ * @param {number} amount
+ * *REQUIRED* 
+ * @param {string} characterId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} virtualCurrency
+ * *REQUIRED* 
+ */
 function SubtractCharacterVirtualCurrency(amount, characterId, playFabId, virtualCurrency)
 {
     var SubtractCharacterVirtualCurrency = server.SubtractCharacterVirtualCurrency(
@@ -2308,7 +2189,16 @@ function SubtractCharacterVirtualCurrency(amount, characterId, playFabId, virtua
         VirtualCurrency: virtualCurrency
     });
     return(SubtractCharacterVirtualCurrency);
-}//amount, characterId, playFabId, virtualCurrency
+}
+/**
+ * Decrements the user's balance of the specified virtual currency by the stated amount. It is possible to make a VC balance negative with this API.
+ * @param {number} amount
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} virtualCurrency
+ * *REQUIRED* 
+ */
 function SubtractUserVirtualCurrency(amount, playFabId, virtualCurrency)
 {
     var SubtractUserVirtualCurrency = server.SubtractUserVirtualCurrency(
@@ -2318,37 +2208,20 @@ function SubtractUserVirtualCurrency(amount, playFabId, virtualCurrency)
         VirtualCurrency: virtualCurrency
     });
     return(SubtractUserVirtualCurrency);
-}//amount, playFabId, virtualCurrency
-function UnlockContainerInstance(containerItemInstanceId, playFabId)
-{
-    var UnlockContainerInstance = server.UnlockContainerInstance(
-    {
-        ContainerItemInstanceId: containerItemInstanceId,
-        PlayFabId: playFabId
-    });
-    return(UnlockContainerInstance);
-}//containerItemInstanceId, playFabId
-function UnlockContainerInstance(containerItemInstanceId, playFabId, catalogVersion)
-{
-    var UnlockContainerInstance = server.UnlockContainerInstance(
-    {
-        ContainerItemInstanceId: containerItemInstanceId,
-        PlayFabId: playFabId,
-        CatalogVersion: catalogVersion
-    });
-    return(UnlockContainerInstance);
-}//containerItemInstanceId, playFabId, catalogVersion
-function UnlockContainerInstance(containerItemInstanceId, playFabId, catalogVersion, characterId)
-{
-    var UnlockContainerInstance = server.UnlockContainerInstance(
-    {
-        ContainerItemInstanceId: containerItemInstanceId,
-        PlayFabId: playFabId,
-        CatalogVersion: catalogVersion,
-        CharacterId: characterId
-    });
-    return(UnlockContainerInstance);
-}//containerItemInstanceId, playFabId, catalogVersion, characterId
+}
+/**
+ * Opens a specific container (ContainerItemInstanceId), with a specific key (KeyItemInstanceId, when required), and returns the contents of the opened container. If the container (and key when relevant) are consumable (RemainingUses > 0), their RemainingUses will be decremented, consistent with the operation of ConsumeItem.
+ * @param {string} containerItemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} catalogVersion
+ * 
+ * @param {string} characterId
+ * 
+ * @param {string} keyItemInstanceId
+ * 
+ */
 function UnlockContainerInstance(containerItemInstanceId, playFabId, catalogVersion, characterId, keyItemInstanceId)
 {
     var UnlockContainerInstance = server.UnlockContainerInstance(
@@ -2360,26 +2233,18 @@ function UnlockContainerInstance(containerItemInstanceId, playFabId, catalogVers
         KeyItemInstanceId: keyItemInstanceId
     });
     return(UnlockContainerInstance);
-}//containerItemInstanceId, playFabId, catalogVersion, characterId, keyItemInstanceId
-function UnlockContainerItem(containerItemId, playFabId)
-{
-    var UnlockContainerItem = server.UnlockContainerItem(
-    {
-        ContainerItemId: containerItemId,
-        PlayFabId: playFabId
-    });
-    return(UnlockContainerItem);
-}//containerItemId, playFabId
-function UnlockContainerItem(containerItemId, playFabId, catalogVersion)
-{
-    var UnlockContainerItem = server.UnlockContainerItem(
-    {
-        ContainerItemId: containerItemId,
-        PlayFabId: playFabId,
-        CatalogVersion: catalogVersion
-    });
-    return(UnlockContainerItem);
-}//containerItemId, playFabId, catalogVersion
+}
+/**
+ * Searches Player or Character inventory for any ItemInstance matching the given CatalogItemId, if necessary unlocks it using any appropriate key, and returns the contents of the opened container. If the container (and key when relevant) are consumable (RemainingUses > 0), their RemainingUses will be decremented, consistent with the operation of ConsumeItem.
+ * @param {string} containerItemId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} catalogVersion
+ * 
+ * @param {string} characterId
+ * 
+ */
 function UnlockContainerItem(containerItemId, playFabId, catalogVersion, characterId)
 {
     var UnlockContainerItem = server.UnlockContainerItem(
@@ -2390,37 +2255,20 @@ function UnlockContainerItem(containerItemId, playFabId, catalogVersion, charact
         CharacterId: characterId
     });
     return(UnlockContainerItem);
-}//containerItemId, playFabId, catalogVersion, characterId
-function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId)
-{
-    var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
-    {
-        ItemInstanceId: itemInstanceId,
-        PlayFabId: playFabId
-    });
-    return(UpdateUserInventoryItemCustomData);
-}//itemInstanceId, playFabId
-function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId, characterId)
-{
-    var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
-    {
-        ItemInstanceId: itemInstanceId,
-        PlayFabId: playFabId,
-        CharacterId: characterId
-    });
-    return(UpdateUserInventoryItemCustomData);
-}//itemInstanceId, playFabId, characterId
-function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId, characterId, data)
-{
-    var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
-    {
-        ItemInstanceId: itemInstanceId,
-        PlayFabId: playFabId,
-        CharacterId: characterId,
-        Data: data
-    });
-    return(UpdateUserInventoryItemCustomData);
-}//itemInstanceId, playFabId, characterId, data
+}
+/**
+ * Updates the key-value pair data tagged to the specified item, which is read-only from the client.
+ * @param {string} itemInstanceId
+ * *REQUIRED* 
+ * @param {string} playFabId
+ * *REQUIRED* 
+ * @param {string} characterId
+ * 
+ * @param {object} data
+ * 
+ * @param {string[]} keysToRemove
+ * 
+ */
 function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId, characterId, data, keysToRemove)
 {
     var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
@@ -2432,52 +2280,25 @@ function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId, characterI
         KeysToRemove: keysToRemove
     });
     return(UpdateUserInventoryItemCustomData);
-}//itemInstanceId, playFabId, characterId, data, keysToRemove
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Server-Side Cloud Script
 //-------------------------------------------------------------------------------------------------------------------------------
-function ExecuteCloudScript(functionName, playFabId)
-{
-    var ExecuteCloudScript = server.ExecuteCloudScript(
-    {
-        FunctionName: functionName,
-        PlayFabId: playFabId
-    });
-    return(ExecuteCloudScript);
-}//functionName, playFabId
-function ExecuteCloudScript(functionName, playFabId, functionParameter)
-{
-    var ExecuteCloudScript = server.ExecuteCloudScript(
-    {
-        FunctionName: functionName,
-        PlayFabId: playFabId,
-        FunctionParameter: functionParameter
-    });
-    return(ExecuteCloudScript);
-}//functionName, playFabId, functionParameter
-function ExecuteCloudScript(functionName, playFabId, functionParameter, generatePlayStreamEvent)
-{
-    var ExecuteCloudScript = server.ExecuteCloudScript(
-    {
-        FunctionName: functionName,
-        PlayFabId: playFabId,
-        FunctionParameter: functionParameter,
-        GeneratePlayStreamEvent: generatePlayStreamEvent
-    });
-    return(ExecuteCloudScript);
-}//functionName, playFabId, functionParameter, generatePlayStreamEvent
-function ExecuteCloudScript(functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection)
-{
-    var ExecuteCloudScript = server.ExecuteCloudScript(
-    {
-        FunctionName: functionName,
-        PlayFabId: playFabId,
-        FunctionParameter: functionParameter,
-        GeneratePlayStreamEvent: generatePlayStreamEvent,
-        RevisionSelection: revisionSelection
-    });
-    return(ExecuteCloudScript);
-}//functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection
+/**
+ * Executes a CloudScript function, with the 'currentPlayerId' set to the PlayFab ID of the authenticated player. The PlayFab ID is the entity ID of the player's master_player_account entity.
+ * @param {string} functionName
+ * 
+ * @param {string} playFabId
+ * 
+ * @param {object} functionParameter
+ * 
+ * @param {boolean} generatePlayStreamEvent
+ * 
+ * @param {CloudScriptRevisionOption} revisionSelection
+ * 
+ * @param {number} specificRevision
+ * 
+ */
 function ExecuteCloudScript(functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection, specificRevision)
 {
     var ExecuteCloudScript = server.ExecuteCloudScript(
@@ -2490,10 +2311,17 @@ function ExecuteCloudScript(functionName, playFabId, functionParameter, generate
         SpecificRevision: specificRevision
     });
     return(ExecuteCloudScript);
-}//functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection, specificRevision
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Shared Group Data
 //-------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Adds users to the set of those able to update both the shared data, as well as the set of users in the group. Only users in the group (and the server) can add new members. Shared Groups are designed for sharing data between a very small number of players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+ * @param {string[]} playFabIds
+ * 
+ * @param {string} sharedGroupId
+ * 
+*/
 function AddSharedGroupMembers(playFabIds, sharedGroupId)
 {
     var AddSharedGroupMembers = server.AddSharedGroupMembers(
@@ -2502,14 +2330,12 @@ function AddSharedGroupMembers(playFabIds, sharedGroupId)
         SharedGroupId: sharedGroupId
     });
     return(AddSharedGroupMembers);
-}//playFabIds, sharedGroupId
-function CreateSharedGroup()
-{
-    var CreateSharedGroup = server.CreateSharedGroup(
-    {
-    });
-    return(CreateSharedGroup);
-}//
+}
+/**
+ * Requests the creation of a shared group object, containing key/value pairs which may be updated by all members of the group. When created by a server, the group will initially have no members. Shared Groups are designed for sharing data between a very small number of players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+ * @param {string} sharedGroupId
+ * 
+ */
 function CreateSharedGroup(sharedGroupId)
 {
     var CreateSharedGroup = server.CreateSharedGroup(
@@ -2517,7 +2343,12 @@ function CreateSharedGroup(sharedGroupId)
         SharedGroupId: sharedGroupId
     });
     return(CreateSharedGroup);
-}//sharedGroupId
+}
+/**
+ * Deletes a shared group, freeing up the shared group ID to be reused for a new group. Shared Groups are designed for sharing data between a very small number of players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+ * @param {string} sharedGroupId
+ * 
+ */
 function DeleteSharedGroup(sharedGroupId)
 {
     var DeleteSharedGroup = server.DeleteSharedGroup(
@@ -2525,24 +2356,16 @@ function DeleteSharedGroup(sharedGroupId)
         SharedGroupId: sharedGroupId
     });
     return(DeleteSharedGroup);
-}//sharedGroupId
-function GetSharedGroupData(sharedGroupId)
-{
-    var GetSharedGroupData = server.GetSharedGroupData(
-    {
-        SharedGroupId: sharedGroupId
-    });
-    return(GetSharedGroupData);
-}//sharedGroupId
-function GetSharedGroupData(sharedGroupId, getMembers)
-{
-    var GetSharedGroupData = server.GetSharedGroupData(
-    {
-        SharedGroupId: sharedGroupId,
-        GetMembers: getMembers
-    });
-    return(GetSharedGroupData);
-}//sharedGroupId, getMembers
+}
+/**
+ * Retrieves data stored in a shared group object, as well as the list of members in the group. The server can access all public and private group data. Shared Groups are designed for sharing data between a very small number of players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+ * @param {string} sharedGroupId
+ * 
+ * @param {boolean} getMembers
+ * 
+ * @param {string[]} keys
+ * 
+ */
 function GetSharedGroupData(sharedGroupId, getMembers, keys)
 {
     var GetSharedGroupData = server.GetSharedGroupData(
@@ -2552,7 +2375,14 @@ function GetSharedGroupData(sharedGroupId, getMembers, keys)
         Keys: keys
     });
     return(GetSharedGroupData);
-}//sharedGroupId, getMembers, keys
+}
+/**
+ * Removes users from the set of those able to update the shared data and the set of users in the group. Only users in the group can remove members. If as a result of the call, zero users remain with access, the group and its associated data will be deleted. Shared Groups are designed for sharing data between a very small number of players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+ * @param {string[]} playFabIds
+ * 
+ * @param {string} sharedGroupId
+ * 
+ */
 function RemoveSharedGroupMembers(playFabIds, sharedGroupId)
 {
     var RemoveSharedGroupMembers = server.RemoveSharedGroupMembers(
@@ -2561,34 +2391,18 @@ function RemoveSharedGroupMembers(playFabIds, sharedGroupId)
         SharedGroupId: sharedGroupId
     });
     return(RemoveSharedGroupMembers);
-}//playFabIds, sharedGroupId
-function UpdateSharedGroupData(sharedGroupId)
-{
-    var UpdateSharedGroupData = server.UpdateSharedGroupData(
-    {
-        SharedGroupId: sharedGroupId
-    });
-    return(UpdateSharedGroupData);
-}//sharedGroupId
-function UpdateSharedGroupData(sharedGroupId, data)
-{
-    var UpdateSharedGroupData = server.UpdateSharedGroupData(
-    {
-        SharedGroupId: sharedGroupId,
-        Data: data
-    });
-    return(UpdateSharedGroupData);
-}//sharedGroupId, data
-function UpdateSharedGroupData(sharedGroupId, data, keysToRemove)
-{
-    var UpdateSharedGroupData = server.UpdateSharedGroupData(
-    {
-        SharedGroupId: sharedGroupId,
-        Data: data,
-        KeysToRemove: keysToRemove
-    });
-    return(UpdateSharedGroupData);
-}//sharedGroupId, data, keysToRemove
+}
+/**
+ * Adds, updates, and removes data keys for a shared group object. If the permission is set to Public, all fields updated or added in this call will be readable by users not in the group. By default, data permissions are set to Private. Regardless of the permission setting, only members of the group (and the server) can update the data. Shared Groups are designed for sharing data between a very small number of players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+ * @param {string} sharedGroupId
+ * Unique identifier for the shared group.
+ * @param {object} data
+ * Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
+ * @param {string[]} keysToRemove
+ * Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
+ * @param {UserDataPermission} permission
+ * Permission to be applied to all user data keys in this request. https://learn.microsoft.com/en-us/rest/api/playfab/server/shared-group-data/update-shared-group-data?view=playfab-rest#userdatapermission
+ */
 function UpdateSharedGroupData(sharedGroupId, data, keysToRemove, permission)
 {
     var UpdateSharedGroupData = server.UpdateSharedGroupData(
@@ -2599,17 +2413,15 @@ function UpdateSharedGroupData(sharedGroupId, data, keysToRemove, permission)
         Permission: permission
     });
     return(UpdateSharedGroupData);
-}//sharedGroupId, data, keysToRemove, permission
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                         VANILLA PLAYFAB - Title-Wide Data Management
 //-------------------------------------------------------------------------------------------------------------------------------
-function GetCatalogItems()
-{
-    var GetCatalogItems = server.GetCatalogItems(
-    {
-    });
-    return(GetCatalogItems);
-}//
+/**
+ * Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
+ * @param {string} catalogVersion
+ * 
+ */
 function GetCatalogItems(catalogVersion)
 {
     var GetCatalogItems = server.GetCatalogItems(
@@ -2617,7 +2429,12 @@ function GetCatalogItems(catalogVersion)
         CatalogVersion: catalogVersion
     });
     return(GetCatalogItems);
-}//catalogVersion
+}
+/**
+ * Retrieves the key-value store of custom publisher settings
+ * @param {string[]} keys
+ * 
+ */
 function GetPublisherData(keys)
 {
     var GetPublisherData = server.GetPublisherData(
@@ -2625,24 +2442,16 @@ function GetPublisherData(keys)
         Keys: keys
     });
     return(GetPublisherData);
-}//keys
-function GetStoreItems(storeId)
-{
-    var GetStoreItems = server.GetStoreItems(
-    {
-        StoreId: storeId
-    });
-    return(GetStoreItems);
-}//storeId
-function GetStoreItems(storeId, catalogVersion)
-{
-    var GetStoreItems = server.GetStoreItems(
-    {
-        StoreId: storeId,
-        CatalogVersion: catalogVersion
-    });
-    return(GetStoreItems);
-}//storeId, catalogVersion
+}
+/**
+ * Retrieves the set of items defined for the specified store, including all prices defined, for the specified player
+ * @param {string} storeId
+ * *REQUIRED* Unique identifier for the store which is being requested.
+ * @param {string} catalogVersion
+ * Catalog version to store items from. Use default catalog version if null.
+ * @param {string} playFabId
+ * Optional identifier for the player to use in requesting the store information - if used, segment overrides will be applied.
+ */
 function GetStoreItems(storeId, catalogVersion, playFabId)
 {
     var GetStoreItems = server.GetStoreItems(
@@ -2652,22 +2461,24 @@ function GetStoreItems(storeId, catalogVersion, playFabId)
         PlayFabId: playFabId
     });
     return(GetStoreItems);
-}//storeId, catalogVersion, playFabId
+}
+/**
+ * Retrieves the current server time. Time is always returned as Coordinated Universal Time (UTC). Please note that due to clock drift between servers, there is a potential variance of up to 5 seconds.
+ */
 function GetTime()
 {
     var GetTime = server.GetTime(
     {
     });
     return(GetTime);
-}//
-function GetTitleData(keys)
-{
-    var GetTitleData = server.GetTitleData(
-    {
-        Keys: keys
-    });
-    return(GetTitleData);
-}//keys
+}
+/**
+ * Retrieves the key-value store of custom title settings
+ * @param {string[]} keys
+ * Specific keys to search for in the title data (leave null to get all keys)
+ * @param {string} overrideLabel
+ * Optional field that specifies the name of an override. This value is ignored when used by the game client; otherwise, the overrides are applied automatically to the title data.
+ */
 function GetTitleData(keys, overrideLabel)
 {
     var GetTitleData = server.GetTitleData(
@@ -2676,15 +2487,14 @@ function GetTitleData(keys, overrideLabel)
         OverrideLabel: overrideLabel
     });
     return(GetTitleData);
-}//keys, overrideLabel
-function GetTitleInternalData(keys)
-{
-    var GetTitleInternalData = server.GetTitleInternalData(
-    {
-        Keys: keys
-    });
-    return(GetTitleInternalData);
-}//keys
+}
+/**
+ * Retrieves the key-value store of custom internal title settings
+ * @param {string[]} keys
+ * Specific keys to search for in the title data (leave null to get all keys).
+ * @param {string} overrideLabel
+ * Optional field that specifies the name of an override. This value is ignored when used by the game client; otherwise, the overrides are applied automatically to the title data.
+ */
 function GetTitleInternalData(keys, overrideLabel)
 {
     var GetTitleInternalData = server.GetTitleInternalData(
@@ -2693,14 +2503,12 @@ function GetTitleInternalData(keys, overrideLabel)
         OverrideLabel: overrideLabel
     });
     return(GetTitleInternalData);
-}//keys, overrideLabel
-function GetTitleNews()
-{
-    var GetTitleNews = server.GetTitleNews(
-    {
-    });
-    return(GetTitleNews);
-}//
+}
+/**
+ * Retrieves the title news feed, as configured in the developer portal
+ * @param {number} count
+ * Limits the results to the last n entries. Defaults to 10 if not set.
+ */
 function GetTitleNews(count)
 {
     var GetTitleNews = server.GetTitleNews(
@@ -2708,15 +2516,14 @@ function GetTitleNews(count)
         Count: count
     });
     return(GetTitleNews);
-}//count
-function SetPublisherData(key)
-{
-    var SetPublisherData = server.SetPublisherData(
-    {
-        Key: key
-    });
-    return(SetPublisherData);
-}//key
+}
+/**
+ * Updates the key-value store of custom publisher settings
+ * @param {string} key
+ * *REQUIRED* key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
+ * @param {string} value
+ * new value to set. Set to null to remove a value
+ */
 function SetPublisherData(key, value)
 {
     var SetPublisherData = server.SetPublisherData(
@@ -2725,15 +2532,14 @@ function SetPublisherData(key, value)
         Value: value
     });
     return(SetPublisherData);
-}//key, value
-function SetTitleData(key)
-{
-    var SetTitleData = server.SetTitleData(
-    {
-        Key: key
-    });
-    return(SetTitleData);
-}//key
+}
+/**
+ * Updates the key-value store of custom title settings
+ * @param {string} key
+ * *REQUIRED* key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
+ * @param {string} value
+ * new value to set. Set to null to remove a value
+ */
 function SetTitleData(key, value)
 {
     var SetTitleData = server.SetTitleData(
@@ -2742,15 +2548,14 @@ function SetTitleData(key, value)
         Value: value
     });
     return(SetTitleData);
-}//key, value
-function SetTitleInternalData(key)
-{
-    var SetTitleInternalData = server.SetTitleInternalData(
-    {
-        Key: key
-    });
-    return(SetTitleInternalData);
-}//key
+}
+/**
+ * Updates the key-value store of custom internal title settings
+ * @param {string} key
+ * *REQUIRED* key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
+ * @param {string} value
+ * new value to set. Set to null to remove a value
+ */
 function SetTitleInternalData(key, value)
 {
     var SetTitleInternalData = server.SetTitleInternalData(
@@ -2759,7 +2564,7 @@ function SetTitleInternalData(key, value)
         Value: value
     });
     return(SetTitleInternalData);
-}//key, value
+}
 //-------------------------------------------------------------------------------------------------------------------------------
 //                                                                      END
 //-------------------------------------------------------------------------------------------------------------------------------
