@@ -1,15 +1,15 @@
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Account Management
+//                                                         VANILLA PLAYFAB - Account Management
 //-------------------------------------------------------------------------------------------------------------------------------
-function AddGenericID(context, genericId)
+function AddGenericID(genericId, playFabId)
 {
     var AddGenericID = server.AddGenericID(
     {
         GenericId: genericId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(AddGenericID);
-}//context, genericId
+}//genericId, playFabId
 function BanUsers(bans)
 {
     var BanUsers = server.BanUsers(
@@ -525,71 +525,71 @@ function UpdateBans(bans)
     return(UpdateBans);
 }//bans
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Analytics
+//                                                         VANILLA PLAYFAB - Analytics
 //-------------------------------------------------------------------------------------------------------------------------------
-function WriteCharacterEvent(context, characterId, eventName)
+function WriteCharacterEvent(characterId, eventName, playFabId)
 {
     var WriteCharacterEvent = server.WriteCharacterEvent(
     {
         CharacterId: characterId,
         EventName: eventName,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(WriteCharacterEvent);
-}//context, characterId, eventName
-function WriteCharacterEvent(context, characterId, eventName, body)
+}//characterId, eventName, playFabId
+function WriteCharacterEvent(characterId, eventName, playFabId, body)
 {
     var WriteCharacterEvent = server.WriteCharacterEvent(
     {
         CharacterId: characterId,
         EventName: eventName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Body: body
     });
     return(WriteCharacterEvent);
-}//context, characterId, eventName, body
-function WriteCharacterEvent(context, characterId, eventName, body, timestamp)
+}//characterId, eventName, playFabId, body
+function WriteCharacterEvent(characterId, eventName, playFabId, body, timestamp)
 {
     var WriteCharacterEvent = server.WriteCharacterEvent(
     {
         CharacterId: characterId,
         EventName: eventName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Body: body,
         Timestamp: timestamp
     });
     return(WriteCharacterEvent);
-}//context, characterId, eventName, body, timestamp
-function WritePlayerEvent(context, eventName)
+}//characterId, eventName, playFabId, body, timestamp
+function WritePlayerEvent(eventName, playFabId)
 {
     var WritePlayerEvent = server.WritePlayerEvent(
     {
         EventName: eventName,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(WritePlayerEvent);
-}//context, eventName
-function WritePlayerEvent(context, eventName, body)
+}//eventName, playFabId
+function WritePlayerEvent(eventName, playFabId, body)
 {
     var WritePlayerEvent = server.WritePlayerEvent(
     {
         EventName: eventName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Body: body
     });
     return(WritePlayerEvent);
-}//context, eventName, body
-function WritePlayerEvent(context, eventName, body, timestamp)
+}//eventName, playFabId, body
+function WritePlayerEvent(eventName, playFabId, body, timestamp)
 {
     var WritePlayerEvent = server.WritePlayerEvent(
     {
         EventName: eventName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Body: body,
         Timestamp: timestamp
     });
     return(WritePlayerEvent);
-}//context, eventName, body, timestamp
+}//eventName, playFabId, body, timestamp
 function WriteTitleEvent(eventName)
 {
     var WriteTitleEvent = server.WriteTitleEvent(
@@ -618,7 +618,7 @@ function WriteTitleEvent(eventName, body, timestamp)
     return(WriteTitleEvent);
 }//eventName, body, timestamp
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Authentication
+//                                                         VANILLA PLAYFAB - Authentication
 //-------------------------------------------------------------------------------------------------------------------------------
 function AuthenticateSessionTicket(sessionTicket)
 {
@@ -757,263 +757,263 @@ function LoginWithXboxId(sandbox, xboxId, createAccount, infoRequestParameters)
     });
     return(LoginWithXboxId);
 }//sandbox, xboxId, createAccount, infoRequestParameters
-function SetPlayerSecret(context)
+function SetPlayerSecret(playFabId)
 {
     var SetPlayerSecret = server.SetPlayerSecret(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(SetPlayerSecret);
-}//context
-function SetPlayerSecret(context, playerSecret)
+}//playFabId
+function SetPlayerSecret(playFabId, playerSecret)
 {
     var SetPlayerSecret = server.SetPlayerSecret(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         PlayerSecret: playerSecret
     });
     return(SetPlayerSecret);
-}//context, playerSecret
+}//playFabId, playerSecret
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Character Data
+//                                                         VANILLA PLAYFAB - Character Data
 //-------------------------------------------------------------------------------------------------------------------------------
-function GetCharacterData(context, characterId)
+function GetCharacterData(characterId, playFabId)
 {
     var GetCharacterData = server.GetCharacterData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetCharacterData);
-}//context, characterId
-function GetCharacterData(context, characterId, ifChangedFromDataVersion)
+}//characterId, playFabId
+function GetCharacterData(characterId, playFabId, ifChangedFromDataVersion)
 {
     var GetCharacterData = server.GetCharacterData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetCharacterData);
-}//context, characterId, ifChangedFromDataVersion
-function GetCharacterData(context, characterId, ifChangedFromDataVersion, keys)
+}//characterId, playFabId, ifChangedFromDataVersion
+function GetCharacterData(characterId, playFabId, ifChangedFromDataVersion, keys)
 {
     var GetCharacterData = server.GetCharacterData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetCharacterData);
-}//context, characterId, ifChangedFromDataVersion, keys
-function GetCharacterInternalData(context, characterId)
+}//characterId, playFabId, ifChangedFromDataVersion, keys
+function GetCharacterInternalData(characterId, playFabId)
 {
     var GetCharacterInternalData = server.GetCharacterInternalData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetCharacterInternalData);
-}//context, characterId
-function GetCharacterInternalData(context, characterId, ifChangedFromDataVersion)
+}//characterId, playFabId
+function GetCharacterInternalData(characterId, playFabId, ifChangedFromDataVersion)
 {
     var GetCharacterInternalData = server.GetCharacterInternalData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetCharacterInternalData);
-}//context, characterId, ifChangedFromDataVersion
-function GetCharacterInternalData(context, characterId, ifChangedFromDataVersion, keys)
+}//characterId, playFabId, ifChangedFromDataVersion
+function GetCharacterInternalData(characterId, playFabId, ifChangedFromDataVersion, keys)
 {
     var GetCharacterInternalData = server.GetCharacterInternalData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetCharacterInternalData);
-}//context, characterId, ifChangedFromDataVersion, keys
-function GetCharacterReadOnlyData(context, characterId)
+}//characterId, playFabId, ifChangedFromDataVersion, keys
+function GetCharacterReadOnlyData(characterId, playFabId)
 {
     var GetCharacterReadOnlyData = server.GetCharacterReadOnlyData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetCharacterReadOnlyData);
-}//context, characterId
-function GetCharacterReadOnlyData(context, characterId, ifChangedFromDataVersion)
+}//characterId, playFabId
+function GetCharacterReadOnlyData(characterId, playFabId, ifChangedFromDataVersion)
 {
     var GetCharacterReadOnlyData = server.GetCharacterReadOnlyData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetCharacterReadOnlyData);
-}//context, characterId, ifChangedFromDataVersion
-function GetCharacterReadOnlyData(context, characterId, ifChangedFromDataVersion, keys)
+}//characterId, playFabId, ifChangedFromDataVersion
+function GetCharacterReadOnlyData(characterId, playFabId, ifChangedFromDataVersion, keys)
 {
     var GetCharacterReadOnlyData = server.GetCharacterReadOnlyData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetCharacterReadOnlyData);
-}//context, characterId, ifChangedFromDataVersion, keys
-function UpdateCharacterData(context, characterId)
+}//characterId, playFabId, ifChangedFromDataVersion, keys
+function UpdateCharacterData(characterId, playFabId)
 {
     var UpdateCharacterData = server.UpdateCharacterData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(UpdateCharacterData);
-}//context, characterId
-function UpdateCharacterData(context, characterId, data)
+}//characterId, playFabId
+function UpdateCharacterData(characterId, playFabId, data)
 {
     var UpdateCharacterData = server.UpdateCharacterData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateCharacterData);
-}//context, characterId, data
-function UpdateCharacterData(context, characterId, data, keysToRemove)
+}//characterId, playFabId, data
+function UpdateCharacterData(characterId, playFabId, data, keysToRemove)
 {
     var UpdateCharacterData = server.UpdateCharacterData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateCharacterData);
-}//context, characterId, data, keysToRemove
-function UpdateCharacterData(context, characterId, data, keysToRemove, permission)
+}//characterId, playFabId, data, keysToRemove
+function UpdateCharacterData(characterId, playFabId, data, keysToRemove, permission)
 {
     var UpdateCharacterData = server.UpdateCharacterData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove,
         Permission: permission
     });
     return(UpdateCharacterData);
-}//context, characterId, data, keysToRemove, permission
-function UpdateCharacterInternalData(context, characterId)
+}//characterId, playFabId, data, keysToRemove, permission
+function UpdateCharacterInternalData(characterId, playFabId)
 {
     var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(UpdateCharacterInternalData);
-}//context, characterId
-function UpdateCharacterInternalData(context, characterId, data)
+}//characterId, playFabId
+function UpdateCharacterInternalData(characterId, playFabId, data)
 {
     var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateCharacterInternalData);
-}//context, characterId, data
-function UpdateCharacterInternalData(context, characterId, data, keysToRemove)
+}//characterId, playFabId, data
+function UpdateCharacterInternalData(characterId, playFabId, data, keysToRemove)
 {
     var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateCharacterInternalData);
-}//context, characterId, data, keysToRemove
-function UpdateCharacterInternalData(context, characterId, data, keysToRemove, permission)
+}//characterId, playFabId, data, keysToRemove
+function UpdateCharacterInternalData(characterId, playFabId, data, keysToRemove, permission)
 {
     var UpdateCharacterInternalData = server.UpdateCharacterInternalData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove,
         Permission: permission
     });
     return(UpdateCharacterInternalData);
-}//context, characterId, data, keysToRemove, permission
-function UpdateCharacterReadOnlyData(context, characterId)
+}//characterId, playFabId, data, keysToRemove, permission
+function UpdateCharacterReadOnlyData(characterId, playFabId)
 {
     var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(UpdateCharacterReadOnlyData);
-}//context, characterId
-function UpdateCharacterReadOnlyData(context, characterId, data)
+}//characterId, playFabId
+function UpdateCharacterReadOnlyData(characterId, playFabId, data)
 {
     var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateCharacterReadOnlyData);
-}//context, characterId, data
-function UpdateCharacterReadOnlyData(context, characterId, data, keysToRemove)
+}//characterId, playFabId, data
+function UpdateCharacterReadOnlyData(characterId, playFabId, data, keysToRemove)
 {
     var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateCharacterReadOnlyData);
-}//context, characterId, data, keysToRemove
-function UpdateCharacterReadOnlyData(context, characterId, data, keysToRemove, permission)
+}//characterId, playFabId, data, keysToRemove
+function UpdateCharacterReadOnlyData(characterId, playFabId, data, keysToRemove, permission)
 {
     var UpdateCharacterReadOnlyData = server.UpdateCharacterReadOnlyData(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove,
         Permission: permission
     });
     return(UpdateCharacterReadOnlyData);
-}//context, characterId, data, keysToRemove, permission
+}//characterId, playFabId, data, keysToRemove, permission
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Characters
+//                                                         VANILLA PLAYFAB - Characters
 //-------------------------------------------------------------------------------------------------------------------------------
-function DeleteCharacterFromUser(context, characterId, saveCharacterInventory)
+function DeleteCharacterFromUser(characterId, playFabId, saveCharacterInventory)
 {
     var DeleteCharacterFromUser = server.DeleteCharacterFromUser(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         SaveCharacterInventory: saveCharacterInventory
     });
     return(DeleteCharacterFromUser);
-}//context, characterId, saveCharacterInventory
-function GetAllUsersCharacters(context)
+}//characterId, playFabId, saveCharacterInventory
+function GetAllUsersCharacters(playFabId)
 {
     var GetAllUsersCharacters = server.GetAllUsersCharacters(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetAllUsersCharacters);
-}//context
+}//playFabId
 function GetCharacterLeaderboard(maxResultsCount, startPosition, statisticName)
 {
     var GetCharacterLeaderboard = server.GetCharacterLeaderboard(
@@ -1024,66 +1024,66 @@ function GetCharacterLeaderboard(maxResultsCount, startPosition, statisticName)
     });
     return(GetCharacterLeaderboard);
 }//maxResultsCount, startPosition, statisticName
-function GetCharacterStatistics(context, characterId)
+function GetCharacterStatistics(characterId, playFabId)
 {
     var GetCharacterStatistics = server.GetCharacterStatistics(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetCharacterStatistics);
-}//context, characterId
-function GetLeaderboardAroundCharacter(context, characterId, maxResultsCount, statisticName)
+}//characterId, playFabId
+function GetLeaderboardAroundCharacter(characterId, maxResultsCount, playFabId, statisticName)
 {
     var GetLeaderboardAroundCharacter = server.GetLeaderboardAroundCharacter(
     {
         CharacterId: characterId,
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StatisticName: statisticName
     });
     return(GetLeaderboardAroundCharacter);
-}//context, characterId, maxResultsCount, statisticName
-function GetLeaderboardForUserCharacters(context, statisticName)
+}//characterId, maxResultsCount, playFabId, statisticName
+function GetLeaderboardForUserCharacters(playFabId, statisticName)
 {
     var GetLeaderboardForUserCharacters = server.GetLeaderboardForUserCharacters(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StatisticName: statisticName
     });
     return(GetLeaderboardForUserCharacters);
-}//context, statisticName
-function GrantCharacterToUser(context, characterName, characterType)
+}//playFabId, statisticName
+function GrantCharacterToUser(characterName, characterType, playFabId)
 {
     var GrantCharacterToUser = server.GrantCharacterToUser(
     {
         CharacterName: characterName,
         CharacterType: characterType,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GrantCharacterToUser);
-}//context, characterName, characterType
-function UpdateCharacterStatistics(context, characterId)
+}//characterName, characterType, playFabId
+function UpdateCharacterStatistics(characterId, playFabId)
 {
     var UpdateCharacterStatistics = server.UpdateCharacterStatistics(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(UpdateCharacterStatistics);
-}//context, characterId
-function UpdateCharacterStatistics(context, characterId, characterStatistics)
+}//characterId, playFabId
+function UpdateCharacterStatistics(characterId, playFabId, characterStatistics)
 {
     var UpdateCharacterStatistics = server.UpdateCharacterStatistics(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CharacterStatistics: characterStatistics
     });
     return(UpdateCharacterStatistics);
-}//context, characterId, characterStatistics
+}//characterId, playFabId, characterStatistics
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Content
+//                                                         VANILLA PLAYFAB - Content
 //-------------------------------------------------------------------------------------------------------------------------------
 function GetContentDownloadUrl(key)
 {
@@ -1113,103 +1113,103 @@ function GetContentDownloadUrl(key, httpMethod, thruCDN)
     return(GetContentDownloadUrl);
 }//key, httpMethod, thruCDN
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Friend List Management
+//                                                         VANILLA PLAYFAB - Friend List Management
 //-------------------------------------------------------------------------------------------------------------------------------
-function AddFriend(context, friendEmail)
+function AddFriend(playFabId, friendEmail)
 {
     var AddFriend = server.AddFriend(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FriendEmail: friendEmail
     });
     return(AddFriend);
-}//context, friendEmail
-function AddFriend(context, friendPlayFabId)
+}//playFabId, friendEmail
+function AddFriend(playFabId, friendPlayFabId)
 {
     var AddFriend = server.AddFriend(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FriendPlayFabId: friendPlayFabId
     });
     return(AddFriend);
-}//context, friendPlayFabId
-function AddFriend(context, friendTitleDisplayName)
+}//playFabId, friendPlayFabId
+function AddFriend(playFabId, friendTitleDisplayName)
 {
     var AddFriend = server.AddFriend(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FriendTitleDisplayName: friendTitleDisplayName
     });
     return(AddFriend);
-}//context, friendTitleDisplayName
-function AddFriend(context, friendUsername)
+}//playFabId, friendTitleDisplayName
+function AddFriend(playFabId, friendUsername)
 {
     var AddFriend = server.AddFriend(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FriendUsername: friendUsername
     });
     return(AddFriend);
-}//context, friendUsername
-function GetFriendsList(context)
+}//playFabId, friendUsername
+function GetFriendsList(playFabId)
 {
     var GetFriendsList = server.GetFriendsList(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetFriendsList);
-}//context
-function GetFriendsList(context, externalPlatformFriends)
+}//playFabId
+function GetFriendsList(playFabId, externalPlatformFriends)
 {
     var GetFriendsList = server.GetFriendsList(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         ExternalPlatformFriends: externalPlatformFriends
     });
     return(GetFriendsList);
-}//context, externalPlatformFriends
-function GetFriendsList(context, externalPlatformFriends, profileConstraints)
+}//playFabId, externalPlatformFriends
+function GetFriendsList(playFabId, externalPlatformFriends, profileConstraints)
 {
     var GetFriendsList = server.GetFriendsList(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         ExternalPlatformFriends: externalPlatformFriends,
         ProfileConstraints: profileConstraints
     });
     return(GetFriendsList);
-}//context, externalPlatformFriends, profileConstraints
-function GetFriendsList(context, externalPlatformFriends, profileConstraints, xboxToken)
+}//playFabId, externalPlatformFriends, profileConstraints
+function GetFriendsList(playFabId, externalPlatformFriends, profileConstraints, xboxToken)
 {
     var GetFriendsList = server.GetFriendsList(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         ExternalPlatformFriends: externalPlatformFriends,
         ProfileConstraints: profileConstraints,
         XboxToken: xboxToken
     });
     return(GetFriendsList);
-}//context, externalPlatformFriends, profileConstraints, xboxToken
-function RemoveFriend(context, friendPlayFabId)
+}//playFabId, externalPlatformFriends, profileConstraints, xboxToken
+function RemoveFriend(friendPlayFabId, playFabId)
 {
     var RemoveFriend = server.RemoveFriend(
     {
         FriendPlayFabId: friendPlayFabId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(RemoveFriend);
-}//context, friendPlayFabId
-function SetFriendTags(context, friendPlayFabId, tags)
+}//friendPlayFabId, playFabId
+function SetFriendTags(friendPlayFabId, playFabId, tags)
 {
     var SetFriendTags = server.SetFriendTags(
     {
         FriendPlayFabId: friendPlayFabId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Tags: tags
     });
     return(SetFriendTags);
-}//context, friendPlayFabId, tags
+}//friendPlayFabId, playFabId, tags
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Matchmaking
+//                                                         VANILLA PLAYFAB - Matchmaking
 //-------------------------------------------------------------------------------------------------------------------------------
 function DeregisterGame(lobbyId)
 {
@@ -1219,15 +1219,15 @@ function DeregisterGame(lobbyId)
     });
     return(DeregisterGame);
 }//lobbyId
-function NotifyMatchmakerPlayerLeft(context, lobbyId)
+function NotifyMatchmakerPlayerLeft(lobbyId, playFabId)
 {
     var NotifyMatchmakerPlayerLeft = server.NotifyMatchmakerPlayerLeft(
     {
         LobbyId: lobbyId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(NotifyMatchmakerPlayerLeft);
-}//context, lobbyId
+}//lobbyId, playFabId
 function RedeemMatchmakerTicket(lobbyId, ticket)
 {
     var RedeemMatchmakerTicket = server.RedeemMatchmakerTicket(
@@ -1354,7 +1354,7 @@ function SetGameServerInstanceTags(lobbyId, tags)
     return(SetGameServerInstanceTags);
 }//lobbyId, tags
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Platform Specific Methods
+//                                                         VANILLA PLAYFAB - Platform Specific Methods
 //-------------------------------------------------------------------------------------------------------------------------------
 function AwardSteamAchievement(achievements)
 {
@@ -1365,47 +1365,47 @@ function AwardSteamAchievement(achievements)
     return(AwardSteamAchievement);
 }//achievements
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Play Stream
+//                                                         VANILLA PLAYFAB - Play Stream
 //-------------------------------------------------------------------------------------------------------------------------------
-function AddPlayerTag(context, tagName)
+function AddPlayerTag(playFabId, tagName)
 {
     var AddPlayerTag = server.AddPlayerTag(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         TagName: tagName
     });
     return(AddPlayerTag);
-}//context, tagName
+}//playFabId, tagName
 function GetAllSegments()
 {
     var GetAllSegments = server.GetAllSegments({});
     return(GetAllSegments);
 }//
-function GetPlayerSegments(context)
+function GetPlayerSegments(playFabId)
 {
     var GetPlayerSegments = server.GetPlayerSegments(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetPlayerSegments);
-}//context
-function GetPlayerTags(context)
+}//playFabId
+function GetPlayerTags(playFabId)
 {
     var GetPlayerTags = server.GetPlayerTags(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetPlayerTags);
-}//context
-function GetPlayerTags(context, namespace)
+}//playFabId
+function GetPlayerTags(playFabId, namespace)
 {
     var GetPlayerTags = server.GetPlayerTags(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Namespace: namespace
     });
     return(GetPlayerTags);
-}//context, namespace
+}//playFabId, namespace
 function GetPlayersInSegment(segmentId)
 {
     var GetPlayersInSegment = server.GetPlayersInSegment(
@@ -1456,60 +1456,60 @@ function GetPlayersInSegment(segmentId, continuationToken, getProfilesAsync, max
     });
     return(GetPlayersInSegment);
 }//segmentId, continuationToken, getProfilesAsync, maxBatchSize, secondsToLive
-function RemovePlayerTag(context, tagName)
+function RemovePlayerTag(playFabId, tagName)
 {
     var RemovePlayerTag = server.RemovePlayerTag(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         TagName: tagName
     });
     return(RemovePlayerTag);
-}//context, tagName
+}//playFabId, tagName
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Player Data Management
+//                                                         VANILLA PLAYFAB - Player Data Management
 //-------------------------------------------------------------------------------------------------------------------------------
-function GetFriendLeaderboard(context, maxResultsCount, startPosition, statisticName)
+function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName)
 {
     var GetFriendLeaderboard = server.GetFriendLeaderboard(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StartPosition: startPosition,
         StatisticName: statisticName
     });
     return(GetFriendLeaderboard);
-}//context, maxResultsCount, startPosition, statisticName
-function GetFriendLeaderboard(context, maxResultsCount, startPosition, statisticName, externalPlatformFriends)
+}//maxResultsCount, playFabId, startPosition, statisticName
+function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends)
 {
     var GetFriendLeaderboard = server.GetFriendLeaderboard(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StartPosition: startPosition,
         StatisticName: statisticName,
         ExternalPlatformFriends: externalPlatformFriends
     });
     return(GetFriendLeaderboard);
-}//context, maxResultsCount, startPosition, statisticName, externalPlatformFriends
-function GetFriendLeaderboard(context, maxResultsCount, startPosition, statisticName, externalPlatformFriends, profileConstraints)
+}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends
+function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints)
 {
     var GetFriendLeaderboard = server.GetFriendLeaderboard(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StartPosition: startPosition,
         StatisticName: statisticName,
         ExternalPlatformFriends: externalPlatformFriends,
         ProfileConstraints: profileConstraints
     });
     return(GetFriendLeaderboard);
-}//context, maxResultsCount, startPosition, statisticName, externalPlatformFriends, profileConstraints
-function GetFriendLeaderboard(context, maxResultsCount, startPosition, statisticName, externalPlatformFriends, profileConstraints, version)
+}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints
+function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version)
 {
     var GetFriendLeaderboard = server.GetFriendLeaderboard(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StartPosition: startPosition,
         StatisticName: statisticName,
         ExternalPlatformFriends: externalPlatformFriends,
@@ -1518,13 +1518,13 @@ function GetFriendLeaderboard(context, maxResultsCount, startPosition, statistic
         Version: version
     });
     return(GetFriendLeaderboard);
-}//context, maxResultsCount, startPosition, statisticName, externalPlatformFriends, profileConstraints, version
-function GetFriendLeaderboard(context, maxResultsCount, startPosition, statisticName, externalPlatformFriends, profileConstraints, version, xboxToken)
+}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version
+function GetFriendLeaderboard(maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version, xboxToken)
 {
     var GetFriendLeaderboard = server.GetFriendLeaderboard(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StartPosition: startPosition,
         StatisticName: statisticName,
         ExternalPlatformFriends: externalPlatformFriends,
@@ -1534,7 +1534,7 @@ function GetFriendLeaderboard(context, maxResultsCount, startPosition, statistic
         XboxToken: xboxToken
     });
     return(GetFriendLeaderboard);
-}//context, maxResultsCount, startPosition, statisticName, externalPlatformFriends, profileConstraints, version, xboxToken
+}//maxResultsCount, playFabId, startPosition, statisticName, externalPlatformFriends, profileConstraints, version, xboxToken
 function GetLeaderboard(maxResultsCount, startPosition, statisticName)
 {
     var GetLeaderboard = server.GetLeaderboard(
@@ -1569,49 +1569,49 @@ function GetLeaderboard(maxResultsCount, startPosition, statisticName, profileCo
     });
     return(GetLeaderboard);
 }//maxResultsCount, startPosition, statisticName, profileConstraints, version
-function GetLeaderboardAroundUser(context, maxResultsCount, statisticName)
+function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName)
 {
     var GetLeaderboardAroundUser = server.GetLeaderboardAroundUser(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StatisticName: statisticName
     });
     return(GetLeaderboardAroundUser);
-}//context, maxResultsCount, statisticName
-function GetLeaderboardAroundUser(context, maxResultsCount, statisticName, profileConstraints)
+}//maxResultsCount, playFabId, statisticName
+function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName, profileConstraints)
 {
     var GetLeaderboardAroundUser = server.GetLeaderboardAroundUser(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StatisticName: statisticName,
         ProfileConstraints: profileConstraints
     });
     return(GetLeaderboardAroundUser);
-}//context, maxResultsCount, statisticName, profileConstraints
-function GetLeaderboardAroundUser(context, maxResultsCount, statisticName, profileConstraints, version)
+}//maxResultsCount, playFabId, statisticName, profileConstraints
+function GetLeaderboardAroundUser(maxResultsCount, playFabId, statisticName, profileConstraints, version)
 {
     var GetLeaderboardAroundUser = server.GetLeaderboardAroundUser(
     {
         MaxResultsCount: maxResultsCount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StatisticName: statisticName,
         ProfileConstraints: profileConstraints,
         UseSpecificVersion: true,
         Version: version
     });
     return(GetLeaderboardAroundUser);
-}//context, maxResultsCount, statisticName, profileConstraints, version
-function GetPlayerCombinedInfo(context, infoRequestParameters)
+}//maxResultsCount, playFabId, statisticName, profileConstraints, version
+function GetPlayerCombinedInfo(infoRequestParameters, playFabId)
 {
     var GetPlayerCombinedInfo = server.GetPlayerCombinedInfo(
     {
         InfoRequestParameters: infoRequestParameters,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetPlayerCombinedInfo);
-}//context, infoRequestParameters
+}//infoRequestParameters, playFabId
 function GetPlayerStatisticVersions(statisticName)
 {
     var GetPlayerStatisticVersions = server.GetPlayerStatisticVersions(
@@ -1620,387 +1620,387 @@ function GetPlayerStatisticVersions(statisticName)
     });
     return(GetPlayerStatisticVersions);
 }//statisticName
-function GetPlayerStatistics(context)
+function GetPlayerStatistics(playFabId)
 {
     var GetPlayerStatistics = server.GetPlayerStatistics(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetPlayerStatistics);
-}//context
-function GetPlayerStatistics(context, statisticNameVersions)
+}//playFabId
+function GetPlayerStatistics(playFabId, statisticNameVersions)
 {
     var GetPlayerStatistics = server.GetPlayerStatistics(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StatisticNameVersions: statisticNameVersions
     });
     return(GetPlayerStatistics);
-}//context, statisticNameVersions
-function GetPlayerStatistics(context, statisticNameVersions, statisticNames)
+}//playFabId, statisticNameVersions
+function GetPlayerStatistics(playFabId, statisticNameVersions, statisticNames)
 {
     var GetPlayerStatistics = server.GetPlayerStatistics(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         StatisticNameVersions: statisticNameVersions,
         StatisticNames: statisticNames
     });
     return(GetPlayerStatistics);
-}//context, statisticNameVersions, statisticNames
-function GetUserData(context)
+}//playFabId, statisticNameVersions, statisticNames
+function GetUserData(playFabId)
 {
     var GetUserData = server.GetUserData(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetUserData);
-}//context
-function GetUserData(context, ifChangedFromDataVersion)
+}//playFabId
+function GetUserData(playFabId, ifChangedFromDataVersion)
 {
     var GetUserData = server.GetUserData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetUserData);
-}//context, ifChangedFromDataVersion
-function GetUserData(context, ifChangedFromDataVersion, keys)
+}//playFabId, ifChangedFromDataVersion
+function GetUserData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserData = server.GetUserData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetUserData);
-}//context, ifChangedFromDataVersion, keys
-function GetUserInternalData(context)
+}//playFabId, ifChangedFromDataVersion, keys
+function GetUserInternalData(playFabId)
 {
     var GetUserInternalData = server.GetUserInternalData(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetUserInternalData);
-}//context
-function GetUserInternalData(context, ifChangedFromDataVersion)
+}//playFabId
+function GetUserInternalData(playFabId, ifChangedFromDataVersion)
 {
     var GetUserInternalData = server.GetUserInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetUserInternalData);
-}//context, ifChangedFromDataVersion
-function GetUserInternalData(context, ifChangedFromDataVersion, keys)
+}//playFabId, ifChangedFromDataVersion
+function GetUserInternalData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserInternalData = server.GetUserInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetUserInternalData);
-}//context, ifChangedFromDataVersion, keys
-function GetUserPublisherData(context)
+}//playFabId, ifChangedFromDataVersion, keys
+function GetUserPublisherData(playFabId)
 {
     var GetUserPublisherData = server.GetUserPublisherData(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetUserPublisherData);
-}//context
-function GetUserPublisherData(context, ifChangedFromDataVersion)
+}//playFabId
+function GetUserPublisherData(playFabId, ifChangedFromDataVersion)
 {
     var GetUserPublisherData = server.GetUserPublisherData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetUserPublisherData);
-}//context, ifChangedFromDataVersion
-function GetUserPublisherData(context, ifChangedFromDataVersion, keys)
+}//playFabId, ifChangedFromDataVersion
+function GetUserPublisherData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserPublisherData = server.GetUserPublisherData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetUserPublisherData);
-}//context, ifChangedFromDataVersion, keys
-function GetUserPublisherInternalData(context)
+}//playFabId, ifChangedFromDataVersion, keys
+function GetUserPublisherInternalData(playFabId)
 {
     var GetUserPublisherInternalData = server.GetUserPublisherInternalData(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetUserPublisherInternalData);
-}//context
-function GetUserPublisherInternalData(context, ifChangedFromDataVersion)
+}//playFabId
+function GetUserPublisherInternalData(playFabId, ifChangedFromDataVersion)
 {
     var GetUserPublisherInternalData = server.GetUserPublisherInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetUserPublisherInternalData);
-}//context, ifChangedFromDataVersion
-function GetUserPublisherInternalData(context, ifChangedFromDataVersion, keys)
+}//playFabId, ifChangedFromDataVersion
+function GetUserPublisherInternalData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserPublisherInternalData = server.GetUserPublisherInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetUserPublisherInternalData);
-}//context, ifChangedFromDataVersion, keys
-function GetUserPublisherReadOnlyData(context)
+}//playFabId, ifChangedFromDataVersion, keys
+function GetUserPublisherReadOnlyData(playFabId)
 {
     var GetUserPublisherReadOnlyData = server.GetUserPublisherReadOnlyData(
     {
         PlayFabId: currentPlayerId
     });
     return(GetUserPublisherReadOnlyData);
-}//context
-function GetUserPublisherReadOnlyData(context, ifChangedFromDataVersion)
+}//playFabId
+function GetUserPublisherReadOnlyData(playFabId, ifChangedFromDataVersion)
 {
     var GetUserPublisherReadOnlyData = server.GetUserPublisherReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetUserPublisherReadOnlyData);
-}//context, ifChangedFromDataVersion
-function GetUserPublisherReadOnlyData(context, ifChangedFromDataVersion, keys)
+}//playFabId, ifChangedFromDataVersion
+function GetUserPublisherReadOnlyData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserPublisherReadOnlyData = server.GetUserPublisherReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetUserPublisherReadOnlyData);
-}//context, ifChangedFromDataVersion, keys
-function GetUserReadOnlyData(context)
+}//playFabId, ifChangedFromDataVersion, keys
+function GetUserReadOnlyData(playFabId)
 {
     var GetUserReadOnlyData = server.GetUserReadOnlyData(
     {
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetUserReadOnlyData);
-}//context
-function GetUserReadOnlyData(context, ifChangedFromDataVersion)
+}//playFabId
+function GetUserReadOnlyData(playFabId, ifChangedFromDataVersion)
 {
     var GetUserReadOnlyData = server.GetUserReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion
     });
     return(GetUserReadOnlyData);
-}//context, ifChangedFromDataVersion
-function GetUserReadOnlyData(context, ifChangedFromDataVersion, keys)
+}//playFabId, ifChangedFromDataVersion
+function GetUserReadOnlyData(playFabId, ifChangedFromDataVersion, keys)
 {
     var GetUserReadOnlyData = server.GetUserReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         IfChangedFromDataVersion: ifChangedFromDataVersion,
         Keys: keys
     });
     return(GetUserReadOnlyData);
-}//context, ifChangedFromDataVersion, keys
-function UpdatePlayerStatistics(context, statistics)
+}//playFabId, ifChangedFromDataVersion, keys
+function UpdatePlayerStatistics(playFabId, statistics)
 {
     var UpdatePlayerStatistics = server.UpdatePlayerStatistics(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Statistics: statistics
     });
     return(UpdatePlayerStatistics);
-}//context, statistics
-function UpdatePlayerStatistics(context, statistics, forceUpdate)
+}//playFabId, statistics
+function UpdatePlayerStatistics(playFabId, statistics, forceUpdate)
 {
     var UpdatePlayerStatistics = server.UpdatePlayerStatistics(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Statistics: statistics,
         ForceUpdate: forceUpdate
     });
     return(UpdatePlayerStatistics);
-}//context, statistics, forceUpdate
-function UpdateUserData(context, data)
+}//playFabId, statistics, forceUpdate
+function UpdateUserData(playFabId, data)
 {
     var UpdateUserData = server.UpdateUserData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateUserData);
-}//context, data
-function UpdateUserData(context, data, keysToRemove)
+}//playFabId, data
+function UpdateUserData(playFabId, data, keysToRemove)
 {
     var UpdateUserData = server.UpdateUserData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateUserData);
-}//context, data, keysToRemove
-function UpdateUserData(context, data, keysToRemove, permission)
+}//playFabId, data, keysToRemove
+function UpdateUserData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserData = server.UpdateUserData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove,
         Permission: permission
     });
     return(UpdateUserData);
-}//context, data, keysToRemove, permission
-function UpdateUserInternalData(context, data)
+}//playFabId, data, keysToRemove, permission
+function UpdateUserInternalData(playFabId, data)
 {
     var UpdateUserInternalData = server.UpdateUserInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateUserInternalData);
-}//context, data
-function UpdateUserInternalData(context, data, keysToRemove)
+}//playFabId, data
+function UpdateUserInternalData(playFabId, data, keysToRemove)
 {
     var UpdateUserInternalData = server.UpdateUserInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateUserInternalData);
-}//context, data, keysToRemove
-function UpdateUserPublisherData(context, data)
+}//playFabId, data, keysToRemove
+function UpdateUserPublisherData(playFabId, data)
 {
     var UpdateUserPublisherData = server.UpdateUserPublisherData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateUserPublisherData);
-}//context, data
-function UpdateUserPublisherData(context, data, keysToRemove)
+}//playFabId, data
+function UpdateUserPublisherData(playFabId, data, keysToRemove)
 {
     var UpdateUserPublisherData = server.UpdateUserPublisherData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateUserPublisherData);
-}//context, data, keysToRemove
-function UpdateUserPublisherData(context, data, keysToRemove, permission)
+}//playFabId, data, keysToRemove
+function UpdateUserPublisherData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserPublisherData = server.UpdateUserPublisherData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove,
         Permission: permission
     });
     return(UpdateUserPublisherData);
-}//context, data, keysToRemove, permission
-function UpdateUserPublisherInternalData(context, data)
+}//playFabId, data, keysToRemove, permission
+function UpdateUserPublisherInternalData(playFabId, data)
 {
     var UpdateUserPublisherInternalData = server.UpdateUserPublisherInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateUserPublisherInternalData);
-}//context, data
-function UpdateUserPublisherInternalData(context, data, keysToRemove)
+}//playFabId, data
+function UpdateUserPublisherInternalData(playFabId, data, keysToRemove)
 {
     var UpdateUserPublisherInternalData = server.UpdateUserPublisherInternalData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateUserPublisherInternalData);
-}//context, data, keysToRemove
-function UpdateUserPublisherReadOnlyData(context, data)
+}//playFabId, data, keysToRemove
+function UpdateUserPublisherReadOnlyData(playFabId, data)
 {
     var UpdateUserPublisherReadOnlyData = server.UpdateUserPublisherReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateUserPublisherReadOnlyData);
-}//context, data
-function UpdateUserPublisherReadOnlyData(context, data, keysToRemove)
+}//playFabId, data
+function UpdateUserPublisherReadOnlyData(playFabId, data, keysToRemove)
 {
     var UpdateUserPublisherReadOnlyData = server.UpdateUserPublisherReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateUserPublisherReadOnlyData);
-}//context, data, keysToRemove
-function UpdateUserPublisherReadOnlyData(context, data, keysToRemove, permission)
+}//playFabId, data, keysToRemove
+function UpdateUserPublisherReadOnlyData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserPublisherReadOnlyData = server.UpdateUserPublisherReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove,
         Permission: permission
     });
     return(UpdateUserPublisherReadOnlyData);
-}//context, data, keysToRemove, permission
-function UpdateUserReadOnlyData(context, data)
+}//playFabId, data, keysToRemove, permission
+function UpdateUserReadOnlyData(playFabId, data)
 {
     var UpdateUserReadOnlyData = server.UpdateUserReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data
     });
     return(UpdateUserReadOnlyData);
-}//context, data
-function UpdateUserReadOnlyData(context, data, keysToRemove)
+}//playFabId, data
+function UpdateUserReadOnlyData(playFabId, data, keysToRemove)
 {
     var UpdateUserReadOnlyData = server.UpdateUserReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateUserReadOnlyData);
-}//context, data, keysToRemove
-function UpdateUserReadOnlyData(context, data, keysToRemove, permission)
+}//playFabId, data, keysToRemove
+function UpdateUserReadOnlyData(playFabId, data, keysToRemove, permission)
 {
     var UpdateUserReadOnlyData = server.UpdateUserReadOnlyData(
     {
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Data: data,
         KeysToRemove: keysToRemove,
         Permission: permission
     });
     return(UpdateUserReadOnlyData);
-}//context, data, keysToRemove, permission
+}//playFabId, data, keysToRemove, permission
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Player Item Management
+//                                                         VANILLA PLAYFAB - Player Item Management
 //-------------------------------------------------------------------------------------------------------------------------------
-function AddCharacterVirtualCurrency(context, amount, characterId, virtualCurrency)
+function AddCharacterVirtualCurrency(amount, characterId, playFabId, virtualCurrency)
 {
     var AddCharacterVirtualCurrency = server.AddCharacterVirtualCurrency(
     {
         Amount: amount,
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         VirtualCurrency: virtualCurrency
     });
     return(AddCharacterVirtualCurrency);
-}//context, amount, characterId, virtualCurrency
-function AddUserVirtualCurrency(context, amount, virtualCurrency)
+}//amount, characterId, playFabId, virtualCurrency
+function AddUserVirtualCurrency(amount, playFabId, virtualCurrency)
 {
     var AddUserVirtualCurrency = server.AddUserVirtualCurrency(
     {
@@ -2009,28 +2009,28 @@ function AddUserVirtualCurrency(context, amount, virtualCurrency)
         VirtualCurrency: virtualCurrency
     });
     return(AddUserVirtualCurrency);
-}//context, amount, virtualCurrency
-function ConsumeItem(context, consumeCount, itemInstanceId)
+}//amount, playFabId, virtualCurrency
+function ConsumeItem(consumeCount, itemInstanceId, playFabId)
 {
     var ConsumeItem = server.ConsumeItem(
     {
         ConsumeCount: consumeCount,
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(ConsumeItem);
-}//context, consumeCount, itemInstanceId
-function ConsumeItem(context, consumeCount, itemInstanceId, characterId)
+}//consumeCount, itemInstanceId, playFabId
+function ConsumeItem(consumeCount, itemInstanceId, playFabId, characterId)
 {
     var ConsumeItem = server.ConsumeItem(
     {
         ConsumeCount: consumeCount,
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CharacterId: characterId
     });
     return(ConsumeItem);
-}//context, consumeCount, itemInstanceId, characterId
+}//consumeCount, itemInstanceId, playFabId, characterId
 function EvaluateRandomResultTable(tableId)
 {
     var EvaluateRandomResultTable = server.EvaluateRandomResultTable(
@@ -2048,25 +2048,25 @@ function EvaluateRandomResultTable(tableId, catalogVersion)
     });
     return(EvaluateRandomResultTable);
 }//tableId, catalogVersion
-function GetCharacterInventory(context, characterId)
+function GetCharacterInventory(characterId, playFabId)
 {
     var GetCharacterInventory = server.GetCharacterInventory(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GetCharacterInventory);
-}//context, characterId
-function GetCharacterInventory(context, characterId, catalogVersion)
+}//characterId, playFabId
+function GetCharacterInventory(characterId, playFabId, catalogVersion)
 {
     var GetCharacterInventory = server.GetCharacterInventory(
     {
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion
     });
     return(GetCharacterInventory);
-}//context, characterId, catalogVersion
+}//characterId, playFabId, catalogVersion
 function GetRandomResultTables(tableIDs)
 {
     var GetRandomResultTables = server.GetRandomResultTables(
@@ -2084,86 +2084,86 @@ function GetRandomResultTables(tableIDs, catalogVersion)
     });
     return(GetRandomResultTables);
 }//tableIDs, catalogVersion
-function GetUserInventory(context)
+function GetUserInventory(playFabId)
 {
 	var GetUserInventory = server.GetUserInventory(
 	{
-		PlayFabId: currentPlayerId
+		PlayFabId: playFabId
 	});
 	return(GetUserInventory);
-}//context
-function GrantItemsToCharacter(context, characterId)
+}//playFabId
+function GrantItemsToCharacter(characterId, playFabId)
 {
 	var GrantItemsToCharacter = server.GrantItemsToCharacter(
 	{
 		CharacterId: characterId,
-		PlayFabId: currentPlayerId
+		PlayFabId: playFabId
 	});
 	return(GrantItemsToCharacter);
-}//context, characterId
-function GrantItemsToCharacter(context, characterId, annotation)
+}//characterId, playFabId
+function GrantItemsToCharacter(characterId, playFabId, annotation)
 {
 	var GrantItemsToCharacter = server.GrantItemsToCharacter(
 	{
 		CharacterId: characterId,
-		PlayFabId: currentPlayerId,
+		PlayFabId: playFabId,
 		Annotation: annotation
 	});
 	return(GrantItemsToCharacter);
-}//context, characterId, annotation
-function GrantItemsToCharacter(context, characterId, annotation, catalogVersion)
+}//characterId, playFabId, annotation
+function GrantItemsToCharacter(characterId, playFabId, annotation, catalogVersion)
 {
 	var GrantItemsToCharacter = server.GrantItemsToCharacter(
 	{
 		CharacterId: characterId,
-		PlayFabId: currentPlayerId,
+		PlayFabId: playFabId,
 		Annotation: annotation,
 		CatalogVersion: catalogVersion
 	});
 	return(GrantItemsToCharacter);
-}//context, characterId, annotation, catalogVersion
-function GrantItemsToCharacter(context, characterId, annotation, catalogVersion, itemIds)
+}//characterId, playFabId, annotation, catalogVersion
+function GrantItemsToCharacter(characterId, playFabId, annotation, catalogVersion, itemIds)
 {
 	var GrantItemsToCharacter = server.GrantItemsToCharacter(
 	{
 		CharacterId: characterId,
-		PlayFabId: currentPlayerId,
+		PlayFabId: playFabId,
 		Annotation: annotation,
 		CatalogVersion: catalogVersion,
 		ItemIds: itemIds
 	});
 	return(GrantItemsToCharacter);
-}//context, characterId, annotation, catalogVersion, itemIds
-function GrantItemsToUser(context, itemIds)
+}//characterId, playFabId, annotation, catalogVersion, itemIds
+function GrantItemsToUser(itemIds, playFabId)
 {
     var GrantItemsToUser = server.GrantItemsToUser(
     {
         ItemIds: itemIds,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(GrantItemsToUser);
-}//context, itemIds
-function GrantItemsToUser(context, itemIds, annotation)
+}//itemIds, playFabId
+function GrantItemsToUser(itemIds, playFabId, annotation)
 {
     var GrantItemsToUser = server.GrantItemsToUser(
     {
         ItemIds: itemIds,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Annotation: annotation
     });
     return(GrantItemsToUser);
-}//context, itemIds, annotation
-function GrantItemsToUser(context, itemIds, annotation, catalogVersion)
+}//itemIds, playFabId, annotation
+function GrantItemsToUser(itemIds, playFabId, annotation, catalogVersion)
 {
     var GrantItemsToUser = server.GrantItemsToUser(
     {
         ItemIds: itemIds,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         Annotation: annotation,
         CatalogVersion: catalogVersion
     });
     return(GrantItemsToUser);
-}//context, itemIds, annotation, catalogVersion
+}//itemIds, playFabId, annotation, catalogVersion
 function GrantItemsToUsers(itemGrants)
 {
     var GrantItemsToUsers = server.GrantItemsToUsers(
@@ -2181,77 +2181,77 @@ function GrantItemsToUsers(itemGrants, catalogVersion)
     });
     return(GrantItemsToUsers);
 }//itemGrants, catalogVersion
-function ModifyItemUses(context, itemInstanceId, usesToAdd)
+function ModifyItemUses(itemInstanceId, playFabId, usesToAdd)
 {
     var ModifyItemUses = server.ModifyItemUses(
     {
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         UsesToAdd: usesToAdd
     });
     return(ModifyItemUses);
-}//context, itemInstanceId, usesToAdd
-function MoveItemToCharacterFromCharacter(context, givingCharacterId, itemInstanceId, receivingCharacterId)
+}//itemInstanceId, playFabId, usesToAdd
+function MoveItemToCharacterFromCharacter(givingCharacterId, itemInstanceId, playFabId, receivingCharacterId)
 {
     var MoveItemToCharacterFromCharacter = server.MoveItemToCharacterFromCharacter(
     {
         GivingCharacterId: givingCharacterId,
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         ReceivingCharacterId: receivingCharacterId
     });
     return(MoveItemToCharacterFromCharacter);
-}//context, givingCharacterId, itemInstanceId, receivingCharacterId
-function MoveItemToCharacterFromUser(context, characterId, itemInstanceId)
+}//givingCharacterId, itemInstanceId, playFabId, receivingCharacterId
+function MoveItemToCharacterFromUser(characterId, itemInstanceId, playFabId)
 {
     var MoveItemToCharacterFromUser = server.MoveItemToCharacterFromUser(
     {
         CharacterId: characterId,
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(MoveItemToCharacterFromUser);
-}//context, characterId, itemInstanceId
-function MoveItemToUserFromCharacter(context, characterId, itemInstanceId)
+}//characterId, itemInstanceId, playFabId
+function MoveItemToUserFromCharacter(characterId, itemInstanceId, playFabId)
 {
     var MoveItemToUserFromCharacter = server.MoveItemToUserFromCharacter(
     {
         CharacterId: characterId,
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(MoveItemToUserFromCharacter);
-}//context, characterId, itemInstanceId
-function RedeemCoupon(context, couponCode)
+}//characterId, itemInstanceId, playFabId
+function RedeemCoupon(couponCode, playFabId)
 {
     var RedeemCoupon = server.RedeemCoupon(
     {
         CouponCode: couponCode,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(RedeemCoupon);
-}//context, couponCode
-function RedeemCoupon(context, couponCode, catalogVersion)
+}//couponCode, playFabId
+function RedeemCoupon(couponCode, playFabId, catalogVersion)
 {
     var RedeemCoupon = server.RedeemCoupon(
     {
         CouponCode: couponCode,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion
     });
     return(RedeemCoupon);
-}//context, couponCode, catalogVersion
-function RedeemCoupon(context, couponCode, catalogVersion, characterId)
+}//couponCode, playFabId, catalogVersion
+function RedeemCoupon(couponCode, playFabId, catalogVersion, characterId)
 {
     var RedeemCoupon = server.RedeemCoupon(
     {
         CouponCode: couponCode,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion,
         CharacterId: characterId
     });
     return(RedeemCoupon);
-}//context, couponCode, catalogVersion, characterId
+}//couponCode, playFabId, catalogVersion, characterId
 function ReportPlayer(reporteeId, reporterId)
 {
     var ReportPlayer = server.ReportPlayer(
@@ -2271,25 +2271,25 @@ function ReportPlayer(reporteeId, reporterId, comment)
     });
     return(ReportPlayer);
 }//reporteeId, reporterId, comment
-function RevokeInventoryItem(context, itemInstanceId)
+function RevokeInventoryItem(itemInstanceId, playFabId)
 {
     var RevokeInventoryItem = server.RevokeInventoryItem(
     {
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(RevokeInventoryItem);
-}//context, itemInstanceId
-function RevokeInventoryItem(context, itemInstanceId, characterId)
+}//itemInstanceId, playFabId
+function RevokeInventoryItem(itemInstanceId, playFabId, characterId)
 {
     var RevokeInventoryItem = server.RevokeInventoryItem(
     {
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CharacterId: characterId
     });
     return(RevokeInventoryItem);
-}//context, itemInstanceId, characterId
+}//itemInstanceId, playFabId, characterId
 function RevokeInventoryItems(items)
 {
     var RevokeInventoryItems = server.RevokeInventoryItems(
@@ -2298,201 +2298,201 @@ function RevokeInventoryItems(items)
     });
     return(RevokeInventoryItems);
 }//items
-function SubtractCharacterVirtualCurrency(context, amount, characterId, virtualCurrency)
+function SubtractCharacterVirtualCurrency(amount, characterId, playFabId, virtualCurrency)
 {
     var SubtractCharacterVirtualCurrency = server.SubtractCharacterVirtualCurrency(
     {
         Amount: amount,
         CharacterId: characterId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         VirtualCurrency: virtualCurrency
     });
     return(SubtractCharacterVirtualCurrency);
-}//context, amount, characterId, virtualCurrency
-function SubtractUserVirtualCurrency(context, amount, virtualCurrency)
+}//amount, characterId, playFabId, virtualCurrency
+function SubtractUserVirtualCurrency(amount, playFabId, virtualCurrency)
 {
     var SubtractUserVirtualCurrency = server.SubtractUserVirtualCurrency(
     {
         Amount: amount,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         VirtualCurrency: virtualCurrency
     });
     return(SubtractUserVirtualCurrency);
-}//context, amount, virtualCurrency
-function UnlockContainerInstance(context, containerItemInstanceId)
+}//amount, playFabId, virtualCurrency
+function UnlockContainerInstance(containerItemInstanceId, playFabId)
 {
     var UnlockContainerInstance = server.UnlockContainerInstance(
     {
         ContainerItemInstanceId: containerItemInstanceId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(UnlockContainerInstance);
-}//context, containerItemInstanceId
-function UnlockContainerInstance(context, containerItemInstanceId, catalogVersion)
+}//containerItemInstanceId, playFabId
+function UnlockContainerInstance(containerItemInstanceId, playFabId, catalogVersion)
 {
     var UnlockContainerInstance = server.UnlockContainerInstance(
     {
         ContainerItemInstanceId: containerItemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion
     });
     return(UnlockContainerInstance);
-}//context, containerItemInstanceId, catalogVersion
-function UnlockContainerInstance(context, containerItemInstanceId, catalogVersion, characterId)
+}//containerItemInstanceId, playFabId, catalogVersion
+function UnlockContainerInstance(containerItemInstanceId, playFabId, catalogVersion, characterId)
 {
     var UnlockContainerInstance = server.UnlockContainerInstance(
     {
         ContainerItemInstanceId: containerItemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion,
         CharacterId: characterId
     });
     return(UnlockContainerInstance);
-}//context, containerItemInstanceId, catalogVersion, characterId
-function UnlockContainerInstance(context, containerItemInstanceId, catalogVersion, characterId, keyItemInstanceId)
+}//containerItemInstanceId, playFabId, catalogVersion, characterId
+function UnlockContainerInstance(containerItemInstanceId, playFabId, catalogVersion, characterId, keyItemInstanceId)
 {
     var UnlockContainerInstance = server.UnlockContainerInstance(
     {
         ContainerItemInstanceId: containerItemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion,
         CharacterId: characterId,
         KeyItemInstanceId: keyItemInstanceId
     });
     return(UnlockContainerInstance);
-}//context, containerItemInstanceId, catalogVersion, characterId, keyItemInstanceId
-function UnlockContainerItem(context, containerItemId)
+}//containerItemInstanceId, playFabId, catalogVersion, characterId, keyItemInstanceId
+function UnlockContainerItem(containerItemId, playFabId)
 {
     var UnlockContainerItem = server.UnlockContainerItem(
     {
         ContainerItemId: containerItemId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(UnlockContainerItem);
-}//context, containerItemId
-function UnlockContainerItem(context, containerItemId, catalogVersion)
+}//containerItemId, playFabId
+function UnlockContainerItem(containerItemId, playFabId, catalogVersion)
 {
     var UnlockContainerItem = server.UnlockContainerItem(
     {
         ContainerItemId: containerItemId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion
     });
     return(UnlockContainerItem);
-}//context, containerItemId, catalogVersion
-function UnlockContainerItem(context, containerItemId, catalogVersion, characterId)
+}//containerItemId, playFabId, catalogVersion
+function UnlockContainerItem(containerItemId, playFabId, catalogVersion, characterId)
 {
     var UnlockContainerItem = server.UnlockContainerItem(
     {
         ContainerItemId: containerItemId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CatalogVersion: catalogVersion,
         CharacterId: characterId
     });
     return(UnlockContainerItem);
-}//context, containerItemId, catalogVersion, characterId
-function UpdateUserInventoryItemCustomData(context, itemInstanceId)
+}//containerItemId, playFabId, catalogVersion, characterId
+function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId)
 {
     var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
     {
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(UpdateUserInventoryItemCustomData);
-}//context, itemInstanceId
-function UpdateUserInventoryItemCustomData(context, itemInstanceId, characterId)
+}//itemInstanceId, playFabId
+function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId, characterId)
 {
     var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
     {
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CharacterId: characterId
     });
     return(UpdateUserInventoryItemCustomData);
-}//context, itemInstanceId, characterId
-function UpdateUserInventoryItemCustomData(context, itemInstanceId, characterId, data)
+}//itemInstanceId, playFabId, characterId
+function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId, characterId, data)
 {
     var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
     {
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CharacterId: characterId,
         Data: data
     });
     return(UpdateUserInventoryItemCustomData);
-}//context, itemInstanceId, characterId, data
-function UpdateUserInventoryItemCustomData(context, itemInstanceId, characterId, data, keysToRemove)
+}//itemInstanceId, playFabId, characterId, data
+function UpdateUserInventoryItemCustomData(itemInstanceId, playFabId, characterId, data, keysToRemove)
 {
     var UpdateUserInventoryItemCustomData = server.UpdateUserInventoryItemCustomData(
     {
         ItemInstanceId: itemInstanceId,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         CharacterId: characterId,
         Data: data,
         KeysToRemove: keysToRemove
     });
     return(UpdateUserInventoryItemCustomData);
-}//context, itemInstanceId, characterId, data, keysToRemove
+}//itemInstanceId, playFabId, characterId, data, keysToRemove
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Server-Side Cloud Script
+//                                                         VANILLA PLAYFAB - Server-Side Cloud Script
 //-------------------------------------------------------------------------------------------------------------------------------
-function ExecuteCloudScript(context, functionName)
+function ExecuteCloudScript(functionName, playFabId)
 {
     var ExecuteCloudScript = server.ExecuteCloudScript(
     {
         FunctionName: functionName,
-        PlayFabId: currentPlayerId
+        PlayFabId: playFabId
     });
     return(ExecuteCloudScript);
-}//context, functionName
-function ExecuteCloudScript(context, functionName, functionParameter)
+}//functionName, playFabId
+function ExecuteCloudScript(functionName, playFabId, functionParameter)
 {
     var ExecuteCloudScript = server.ExecuteCloudScript(
     {
         FunctionName: functionName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FunctionParameter: functionParameter
     });
     return(ExecuteCloudScript);
-}//context, functionName, functionParameter
-function ExecuteCloudScript(context, functionName, functionParameter, generatePlayStreamEvent)
+}//functionName, playFabId, functionParameter
+function ExecuteCloudScript(functionName, playFabId, functionParameter, generatePlayStreamEvent)
 {
     var ExecuteCloudScript = server.ExecuteCloudScript(
     {
         FunctionName: functionName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FunctionParameter: functionParameter,
         GeneratePlayStreamEvent: generatePlayStreamEvent
     });
     return(ExecuteCloudScript);
-}//context, functionName, functionParameter, generatePlayStreamEvent
-function ExecuteCloudScript(context, functionName, functionParameter, generatePlayStreamEvent, revisionSelection)
+}//functionName, playFabId, functionParameter, generatePlayStreamEvent
+function ExecuteCloudScript(functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection)
 {
     var ExecuteCloudScript = server.ExecuteCloudScript(
     {
         FunctionName: functionName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FunctionParameter: functionParameter,
         GeneratePlayStreamEvent: generatePlayStreamEvent,
         RevisionSelection: revisionSelection
     });
     return(ExecuteCloudScript);
-}//context, functionName, functionParameter, generatePlayStreamEvent, revisionSelection
-function ExecuteCloudScript(context, functionName, functionParameter, generatePlayStreamEvent, revisionSelection, specificRevision)
+}//functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection
+function ExecuteCloudScript(functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection, specificRevision)
 {
     var ExecuteCloudScript = server.ExecuteCloudScript(
     {
         FunctionName: functionName,
-        PlayFabId: currentPlayerId,
+        PlayFabId: playFabId,
         FunctionParameter: functionParameter,
         GeneratePlayStreamEvent: generatePlayStreamEvent,
         RevisionSelection: revisionSelection,
         SpecificRevision: specificRevision
     });
     return(ExecuteCloudScript);
-}//context, functionName, functionParameter, generatePlayStreamEvent, revisionSelection, specificRevision
+}//functionName, playFabId, functionParameter, generatePlayStreamEvent, revisionSelection, specificRevision
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Shared Group Data
+//                                                         VANILLA PLAYFAB - Shared Group Data
 //-------------------------------------------------------------------------------------------------------------------------------
 function AddSharedGroupMembers(playFabIds, sharedGroupId)
 {
@@ -2601,7 +2601,7 @@ function UpdateSharedGroupData(sharedGroupId, data, keysToRemove, permission)
     return(UpdateSharedGroupData);
 }//sharedGroupId, data, keysToRemove, permission
 //-------------------------------------------------------------------------------------------------------------------------------
-//                                                         VANILA PLAYFAB - Title-Wide Data Management
+//                                                         VANILLA PLAYFAB - Title-Wide Data Management
 //-------------------------------------------------------------------------------------------------------------------------------
 function GetCatalogItems()
 {
